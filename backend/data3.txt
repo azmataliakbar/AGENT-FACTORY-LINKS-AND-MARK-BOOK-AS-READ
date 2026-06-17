@@ -1,0 +1,28 @@
+https://agentfactory.panaversity.org/docs/ai-operating-layer
+
+The AI Operating Layer
+
+The Operating Layer: The Interface Argument
+
+The Agent Is the Operating Layer
+How the Agentic Era Dissolves SaaS, the App, and the Personal Computer as We Know It
+
+"For forty years, you launched apps. Click. Type. With RTX Spark and Microsoft Windows, you ask — and the PC does the work." — Jensen Huang, NVIDIA, GTC Taipei, June 1, 2026
+
+On June 1, 2026, NVIDIA announced the RTX Spark superchip — an Arm-based part fusing a Blackwell GPU with roughly a petaflop of on-device AI compute and up to 128GB of unified memory, built with Microsoft to run agents locally on Windows without ever touching the cloud.
+
+The thesis: the PC as a human-operated artifact is ending. SaaS dies because the agent replaces the app. The PC dies — as we know it — because the agent replaces you at the controls.
+
+Key Concepts:
+1. Two deaths, not one — SaaS and the human-operated PC
+2. The SaaSpocalypse — SaaS unbundled into capabilities agents call, UI becomes irrelevant
+3. The forty-year stack — app-on-OS model ending; OS becomes invisible plumbing
+4. The AI Operating Layer — humans state goals, agents operate the OS on their behalf
+5. Personal agents vs general agents — delegates who know you vs operators who do the work
+6. The computer that controls itself — RTX Spark, local compute, OpenShell permissions
+7. Why this time is different — models crossed capability threshold (OSWorld from ~12% to ~66% success), compute came to device, OS vendors rebuilding around delegation
+8. Honest objections — cost, trust, reliability gap, vendor incentives, hybrid model
+9. What dies, what survives — apps, graphical shell, SaaS as destination die; OS as plumbing, capabilities, human intent survive
+10. Conclusion: people set direction, agents do the work
+
+The agentic era's hardest problem is not capability — it is governed capability: permission, auditability, and the ability to say no.

@@ -1,0 +1,42 @@
+https://agentfactory.panaversity.org/docs/skills-connectors-crash-course
+
+SKILLS & CONNECTORS CRASH COURSE
+
+Skills & Connectors: Teach AI Once, Connect It to Your Apps
+2 Features, 5 Tools, 0 Code From You — turn your chat box into a coworker.
+
+The one idea: A chat message tells AI what to do this once. A Skill teaches AI how to do something every time. A Connector gives AI hands to reach your real apps and data.
+
+Six Key Terms:
+- Skill: saved instructions teaching AI how to do one task your way
+- Connector: safe link letting AI reach one of your apps (files, email, messages)
+- Fire/Trigger: when AI activates a skill automatically because request matched it
+- Scope: how much access you give — smaller scope = safer
+- Read-only: AI may look but not change
+- Progressive Disclosure: AI keeps only short summaries loaded, opens full instructions when needed
+
+Part 1: The Two Upgrades
+- From chat box to operating layer: Skills make tasks repeatable; Connectors remove copy-paste
+- What a Skill is: a folder with SKILL.md — name, description, instructions. That's it.
+- What a Connector is: safe, permission-scoped access via MCP standard. AI inherits your permissions.
+- Skills vs Connectors vs Projects vs Custom Instructions: distinct tools for different jobs
+
+Part 2: Using What Already Exists
+- Built-in skills: Word, PowerPoint, Excel, PDF — flip one switch to enable
+- Connecting apps: ~1 minute per app, click Connect, sign in, done
+- Skills + Connectors together: Connector fetches data, Skill shapes output
+
+Part 3: Building Your Own Skill
+- The fastest path: ask skill-creator to build it for you — describe in plain English
+- Anatomy of SKILL.md: frontmatter (name + description) + body (instructions)
+- The description field is everything — it decides whether your skill fires
+- Test, then iterate: test triggering, output, hard cases
+
+Part 4: The Same Skill, Five Places
+- Claude.ai, Cowork/OpenWork, Claude Code/OpenCode — all read same SKILL.md format
+- Agent Skills open standard (agentskills.io, December 2025) makes skills portable
+- ChatGPT has Custom GPTs; Gemini has Gems — vendor-locked alternatives
+
+Part 5: Use This Safely
+- Two real risks: malicious skills (prompt injection, data exfiltration) and over-broad connector access
+- Safe-use checklist: install from trusted sources, read before enabling, start connectors read-only, scope tightly

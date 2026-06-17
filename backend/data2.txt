@@ -1,0 +1,766 @@
+https://agentfactory.panaversity.org/docs/ai-prompting-2026
+
+Quick Start: Crash Courses
+Foundations (Everyone)
+AI Prompting in 2026
+
+AI Prompting in 2026: A 45-Minute Crash Course
+
+13 Concepts, 80% of Real Use
+
+Most people use AI like a Google search. They type a short question, skim the answer, and move on. That works for trivia. It fails for everything that actually matters in your life and your work.
+
+Power users do something different. They brief AI the way they would brief a smart-but-new colleague: with files, context, constraints, and a clear ask. They expect three options instead of one. They argue. They iterate. They check the work. The gap between a novice prompt and a power-user prompt is not cleverness; it is a handful of habits anyone can learn in an afternoon.
+
+This page is that afternoon. Thirteen concepts, grouped into four short parts. No code, no setup, no jargon you cannot guess from context.
+
+One fact underlies everything else on this page: the model has no memory of its own. Every time you press send, it answers from scratch, using only what is in its context window at that moment — your prompt, the conversation so far, any files you attached, and the invisible scaffolding the tool adds. It does not carry yesterday's chat into today's. It does not know you between sessions. Engineers call this stateless. (Some products bolt a "memory" feature on top that quietly re-injects a few facts about you into context on each turn — but those facts are still context, not memory in the human sense.)
+
+That is why one insight runs through every section below: almost every "advanced technique" on this page is one of two moves — getting the right context in, or keeping the wrong context out. The model sees only what is in its context window for this response. Your job is to control what goes in. Read each section through that lens.
+
+A note on tools: examples reference ChatGPT, Claude, and Gemini because most readers have one of those. The skills transfer to any modern chat AI. Where a feature is exclusive to one product, it is named explicitly.
+
+How to read this
+Open a free account with one of Claude, ChatGPT, or Gemini in another browser tab right now, before you keep reading. Each has a free tier that takes about a minute to sign up for. You don't need to do anything in it yet; just have it open. Then read straight through once for the shape, and come back to try the prompts in the closing block. Reading without trying gives you the words; trying gives you the skill. (One of the closing exercises asks you to compare two tools side by side, so you may want a second free account open by the time you get there.)
+
+A short note on what changed since you last looked
+If you used ChatGPT in 2022 or 2023 and decided it was a clever toy, the tool you remember is not the tool you have now. A few changes that happened quietly:
+
+Context windows grew by roughly 1000x. A 2022 model held a few thousand words. A 2026 model holds hundreds of thousands, sometimes a million. That changes what you can stuff into a prompt: a whole book, several days of speech, a folder of contracts.
+
+Reasoning became real. "Think step by step" used to be a magic phrase. Now models have explicit thinking modes that run for seconds, sometimes minutes, exploring multiple approaches before answering. One way to size this: a year ago, the hardest task AI could reliably finish was something that would have taken a person a few minutes. Today it is something that would have taken a person an hour or more. Concept 5 has the measured numbers.
+
+Web search became a built-in tool. The model decides when a question needs fresh information, fires off a search, reads a few pages, and uses what it finds in the answer. A 2022 model could only answer from what it had memorized at training time; a 2026 model can go look something up mid-response. This matters most for anything that changes — news, prices, recent regulations, this week's sports scores.
+
+Code execution became a built-in tool too. The model can write a small program, run it, see the result, and use that result in its answer. This matters most for anything it would otherwise estimate in its head — arithmetic on real numbers, parsing a spreadsheet, running a quick simulation. Both search and code execution tools are mostly invisible: most users do not notice when one fires, so they cannot tell whether an answer came from memory, a fresh web page, or a calculation. Once you start noticing, your prompts get sharper — you can ask "did you actually search for this?" or tell the model "run the numbers, don't estimate."
+
+Multimodal stopped being a sidebar. You can drop a photo, a PDF, a spreadsheet, a voice memo, or a folder of files into a prompt and ask questions about them. The model handles all of those in one stream.
+
+Desktop apps appeared. A new category of products (Cowork, OpenWork) can find your files, draft emails, and update spreadsheets with permission. This is not chat anymore; it is closer to delegating a small task to a coworker.
+
+Command-line agents appeared for developers. Tools like Claude Code and OpenCode live in the terminal, read across a whole codebase, edit many files at once, run tests, and report back. Same shift as the desktop apps — AI acting on real artifacts instead of describing them — but aimed at people who write code.
+
+If your mental model of these tools is out of date by even eighteen months, you are using them at maybe 20% of what they can do today. This page closes that gap.
+
+Part 1: How AI knows things
+Once you understand what is actually happening when you ask AI a question, you stop being surprised by the failures.
+
+1. Novice vs power user
+Watch what changes between the two prompts. The question is the same; the briefing is not.
+
+Side-by-side comparison: a novice asks &#39;which car should I buy?&#39; and gets a generic three-model list. A power user attaches insurance quotes, dealer quotes, and a cost-of-ownership spreadsheet with a specific brief about a 30-minute commute and two kids in car seats, and gets back a structured five-year cost comparison, safety analysis, and a Honda CR-V recommendation that flips conditions. Same AI, different briefing, different answers.
+
+A few more real contrasts from the field:
+
+Buying a car. Novice: "which car is best?" Power user: uploads spec sheets, dealer quotes, and insurance plans, then asks "what are the trade-offs? Read everything and think hard."
+Self-review at work. Novice: "write a self-review for my boss." Power user: uploads a screenshot of their project tracker, recent project docs, and a voice memo of notes, then asks for a draft.
+Critiquing a business idea. Novice: "I have a great business idea, mobile tie-dyeing, critique it." That is sycophancy bait, the AI will mostly applaud. Power user: "Analyze objectively. Use this rubric: is there a problem worth solving, is there a market, is there a competitive advantage?" The AI scored that idea 8 out of 100 and explained why.
+Writing a blog post. Novice: "write a blog post about the BlackBerry." Result: AI slop. Slop is the term of art for AI output that is fluent on the surface and empty underneath — grammatically clean, faintly Wikipedian, full of phrases like "in today's fast-paced world," and saying nothing a reader would remember an hour later. It is what AI produces by default when you give it no context and no constraints. Power user: outline first, critique outline, expand each heading into bullets, critique bullets, only then ask for prose.
+The mental model that ties these together: AI is like a really smart fresh college grad. Highly motivated. Doesn't know much about you yet. Brief them like one. Would a new colleague have enough information to do this job well? If not, give them more.
+
+2. Pretrained knowledge
+AI did not learn by experiencing the world. It has no body, no senses, no time spent moving around in it. It learned by reading text about the world — massive amounts of internet text. Reddit and Quora threads, Wikipedia, books, news articles, research papers, blogs, forums.
+
+Frequency in training data is roughly equal to reliability of the answer. So:
+
+Strong: cooking, celebrity gossip, common medical advice, top-1000 movies, popular programming languages, what is on the Voyager 1 record (NASA spacecraft launched in the 1970s, around 25 billion miles from Earth, carrying greetings in 55 languages), why cats stare at walls (they detect subtle sounds and movements humans miss).
+Sparse: quasars (extremely bright objects in the sky powered by black holes), Cantonese (under 0.1% of internet text), regional history, niche professional knowledge.
+Absent: your company's secret data, your private calendar, anything published after the model's knowledge cutoff date, anything someone never put on the public internet.
+Two practical consequences:
+
+Don't waste time fixing typos. AI was trained on internet text, which is full of typos. It handles misspelled prompts gracefully. Misspelling "definately" will not change the answer.
+
+Watch for absorbed errors. AI also absorbed misconceptions and outdated information from those same sources. A confidently wrong forum post becomes confidently wrong in the model. Check anything important against a primary source.
+
+Why this matters for thinking
+How to Think in the AI Era Crash Course will teach you to detect broken reasoning. The first place to look for it is in confident-sounding pretrained answers about topics where the training data was thin or contested. Confidence is not a signal of correctness.
+
+A quick mental test before you trust a pretrained answer:
+
+Question type	How well-represented in training data?	Trust level
+"How do I make a roux?"	Cooking is one of the most discussed topics on the internet.	High.
+"Plot of a top-1000 movie."	Reviewed and re-reviewed thousands of times.	High.
+"History of an obscure village."	Possibly only one Wikipedia paragraph, or none.	Low; verify against a primary source.
+"Recent regulatory change in my industry."	Almost certainly after the knowledge cutoff.	Trust nothing without web search.
+"What did our company decide last quarter?"	Not in the training data at all.	Trust nothing; the model is guessing.
+This is not a rule you have to memorize. It is the same instinct you would apply to any other source: "how would this person know that?" Apply it to AI too.
+
+A non-software example. A reader once asked an AI for a summary of the rules of a regional folk game played in their grandmother's village. The AI confidently produced three paragraphs of rules. The grandmother, asked, said the rules were almost entirely wrong: the AI had blended descriptions of similar games from other regions because the specific game was barely on the internet. The AI did not lie; it generalized from sparse data. The reader's mistake was not asking, but assuming confidence equaled accuracy.
+
+Curious why AI can sound completely confident and still be wrong? There's a deeper reason behind it. Elan Barenholtz's article "LLMs show language does not describe reality" (IAI, 2026) walks through how these models actually work, in plain English. The article also makes some bigger philosophical claims about human language; feel free to take the part you find useful and ignore the rest.
+
+3. The 3 retrieval modes: pretrained, web search, deep research
+When you ask a question, modern AI tools quietly choose how to answer. Either they answer from pretrained knowledge alone, they fire off a web search and read a few pages, or they run deep research, where they spend several minutes scanning dozens of sources and write a structured report.
+
+You should know which mode is firing, because each has different strengths and different failure modes.
+
+The three retrieval modes as a left-to-right ladder of cost and depth. Mode 1 (Pretrained) is fastest, taking seconds, drawing only from training data, best for definitions and common facts, weak on stale or local info. Mode 2 (Web search) is medium-speed, taking tens of seconds across a handful of live pages, best for current events and quick research, weak when it cites popular sources first. Mode 3 (Deep research) is deepest, taking minutes across dozens of live pages, best for multi-dimensional structured reports, slow and overkill for simple questions. Fast and shallow on the left, slow and deep on the right. The AI usually picks for you. Your prompt&#39;s wording is the steering wheel.
+
+A few examples to make this concrete:
+
+Pretrained answers fine: "why do cats stare at walls," "what's on the Voyager 1 record," "summarize the plot of Hamlet." These do not change week to week.
+Web search rescues a stale model: every model has a knowledge cutoff date, and anything that went viral after that date is invisible to it. A meme, a regulation, a product launch: without web search, the AI has no idea what you are talking about. With web search, it pulls a recent article and answers correctly.
+Web search going wrong: a friend asked "where to run in Henderson, Nevada." The AI cited a 20-year-old web page and recommended a school no longer open to the public. Web search does not check whether sources are current.
+Deep research worth the wait: "plan a Halloween haunted house in our neighborhood, including permits, fire safety, and noise ordinances." The AI proposes a research plan, runs many parallel searches, summarizes, decides what to dig into next, and produces a multi-section report with checklists. This is not a chatbot answer; it is closer to handing the work to a junior researcher for an hour.
+How web search actually works (and why it sometimes misreads pages)
+Under the hood, the exact mechanics vary by tool, but the shape is consistent. A search-and-retrieval layer issues the searches, scans the result list, pulls the most relevant pages, and reduces each one to a short passage or summary. Often that layer is a separate, smaller model. Only the reduced version flows to the user-facing model that talks to you.
+
+The model talking to you frequently does not read the original page directly. It reads a condensed version of it. That is why it sometimes misrepresents what a page actually said: the information went through a translation layer before it reached the model, and translation layers lose nuance.
+
+Practical fix: tell the AI which kinds of sources to use. Instead of "are vaccines safe," try "use the World Health Organization, the FDA, the European Medicines Agency, and peer-reviewed studies. Do not use forums or personal blogs." Source quality is a knob you can turn. Default settings cite popular sources first (Reddit, Wikipedia, YouTube, Google itself, Yelp), which are often reliable but not always trustworthy for high-stakes questions.
+
+A second fix: ask the AI to quote the source. "For each claim, quote the exact sentence from the source page that supports it." This forces the retrieval layer to surface original wording, which catches a lot of summary-layer drift.
+
+A non-software example. A neighborhood-association volunteer used deep research to prepare for a town meeting on local water quality. Her prompt: "Research current water quality issues in [her city] over the last 24 months. Use the EPA, the city's public utility reports, and peer-reviewed studies. Avoid news editorials and forums. Produce a structured report with: (1) the three most-cited issues, (2) data tables showing trends, (3) three concrete questions residents should put to the utility." Eight minutes later she had a briefing grounded in current local data. Pretrained mode could not have done this; web search alone would have produced a shallower answer; deep research was the right tool because the question was multi-dimensional and current.
+
+Choosing a mode in your head. You usually do not pick a mode by clicking a button; the AI picks based on your prompt. But you can steer:
+
+Phrasing pattern	What it usually triggers
+"What is X" / "Summarize Y"	Pretrained only.
+"What's the latest on X" / "Today" / "This week" / a specific city	Web search.
+"Research X thoroughly," "produce a report with citations," "use these source types"	Deep research (in tools that have it; otherwise extended web search).
+Attaching files	Stays pretrained for the files; may search the web for context if the prompt asks for current info.
+AI vs Google. They are not the same tool. Use Google for quick scans, navigating to a specific known site, or buying a thing (the air filter for a 2013 Honda Civic). Use AI when you need synthesis: pros and cons, multi-source comparison, a written-out analysis. The choice depends on whether you want a link or an answer.
+
+A side-by-side rule of thumb:
+
+Task	Better with Google	Better with AI
+"Find the official IRS page for form 1040."	Yes. You want to land on a specific known site.	No.
+"Compare three diabetes medications and what the recent evidence says."	Slower. You'll read 8 tabs.	Faster. AI synthesizes the evidence in one place.
+"Buy a replacement charger for a 2018 ThinkPad."	Yes. You want a product link.	No.
+"Plan a 4-day Lisbon trip with a 6-year-old, no museums."	Slow. You'll juggle blogs and reviews.	Fast. AI integrates constraints.
+"What's the weather tomorrow?"	Either.	Either.
+"Why are my tomato plant leaves yellowing?"	OK. Multiple gardening sites.	Better with a photo attached.
+If your question is "where is X," reach for Google. If your question is "given all this, what should I think," reach for AI.
+
+Part 2: Talking to AI well
+4. Context is the whole game
+Humans hold only a handful of things in active working memory: classic estimates say about seven, newer ones closer to four. Modern AI models can hold hundreds of thousands of words at once, sometimes a million. To put that in proportion: about 750,000 words is the first 4 to 5 Harry Potter books, or several days of continuous speech. The model can read all of it before answering.
+
+But it can only read what you give it. Context is everything that ends up in the model's window for a given response: the system prompt the product set, the descriptions of any tools it can call (web search, code, file access), your prompt, the chat history of this conversation, and any files you uploaded.
+
+The context stack: five layers stacked vertically that together form everything the model knows for a given response. From top: uploaded files (PDFs, spreadsheets, images, voice memos), chat history (every prior turn), your prompt (the layer you edit every time, highlighted), tool descriptions (web search, code execution, file access), and at the bottom the invisible system prompt set by the AI tool. The model only knows what is in this stack; capacity is roughly 750,000 words or 4-5 Harry Potter books; anything you do not put in this stack does not exist for this answer.
+
+This is the only thing the model sees. Because it has no memory of its own, nothing outside this stack exists for this answer — not your last chat, not a file you meant to attach, not the constraint you assumed it would remember. The stack is the world for this response.
+
+Concrete contrast:
+
+Bare prompt: "pros and cons of studying physics versus zoology." You will get generic high-school-counselor advice.
+Context-rich prompt: the same question, plus your career assessment results uploaded as a PDF and a screenshot of your high-school schedule. Now the AI can talk about your specific aptitude profile, your specific course history, and which choice fits which.
+Same model. Same question. Different answer. The difference is the context, not the cleverness of the prompt.
+
+The discipline you are learning: before you press send, ask yourself what a smart new colleague would need in front of them to answer this well. Then attach those things. The colleague will read everything you put in front of them carefully; they will not guess what you did not tell them, will not search your filing cabinet, will not infer your industry, your team's history, or yesterday's email thread. If they would have needed a document or a constraint to do the job, you need to include it.
+
+A non-software example. A 7th-grade teacher asked AI to "draft a lesson plan on the water cycle." The output was a generic plan she could have found in any textbook: definitions, a diagram, three discussion questions. The next day she tried again, with three things attached: her course syllabus (so the AI knew what came before and what came after this lesson), last week's student worksheets with grades visible (so the AI knew which concepts had landed and which had not), and her school's standardized test format. The new lesson plan opened with a five-minute review of the two concepts last week's worksheets had shown were weak, threaded the new material through the test format the students would see in May, and closed with a check-for-understanding question matched to her syllabus's next topic. Same model, same teacher, same subject. The only difference was that the second prompt told the AI what a smart new colleague would have needed to know.
+
+The habit, restated as a checklist before any non-trivial prompt:
+
+Question	If yes, attach or describe it
+Is there a document the answer should be consistent with?	Yes: attach it.
+Is there a constraint the AI cannot infer (budget, time, who's on the team)?	Yes: state it.
+Is there prior context (a previous decision, an existing process)?	Yes: summarize in one paragraph.
+Is there an output format you want (table, email, bullet list)?	Yes: name it.
+Is there an audience (a boss, a child, a stranger)?	Yes: name them.
+Five lines of context, properly chosen, beats five paragraphs of cleverness.
+
+Context rot
+Modern context windows are large, but not infinite, and recall degrades inside them. The biggest practical mistake people make: they keep one very long conversation going across many unrelated topics. AI just helped you plan a workout, now you ask it to debug a spreadsheet, now you ask it to write a thank-you note to your aunt. The workout context is still in there, distracting the model.
+
+Rule of thumb: when the topic changes, start a new conversation. Cheap to do, free to do, and the answers get visibly better.
+
+Symptoms that tell you a conversation has gone stale:
+
+The AI starts referencing earlier parts of the chat that have nothing to do with what you just asked.
+Its answers get longer and vaguer over time, with more hedging.
+It contradicts a constraint you stated five turns ago.
+It starts apologizing repeatedly without making progress.
+A name for what is happening: most modern chat tools, once a conversation gets long enough, quietly compact the older parts of the chat — they take the early turns, summarize them into a short paragraph, and replace the originals with the summary to make room. Claude shows a small "compacting" message when this happens; ChatGPT and Gemini do it silently. The narrative survives, but the specifics do not. The library you told it to use three hours ago, the naming convention you agreed on, the constraint you stated in turn four — any of these can quietly disappear into the summary and stop showing up in the model's answers. The fix is the same as the rule above, just better motivated: a chat window is working memory, not storage. Anything that needs to survive past one long session belongs in a project, an attached file, or a note you can re-paste — not in the chat history itself.
+
+When you see these, the instinct is to fix it with one more clarifying prompt. Resist it: that just adds more tangled context to a context that is already tangled. Apply the rule above instead. Start the new chat, paste in the one or two facts that actually matter, and continue from there. The reset is almost always faster than the rescue.
+
+If the dead chat produced something worth keeping (a plan, a draft, a decision), save it to a file before resetting. That way you don't lose the work, but you also don't drag the noise into the next task.
+
+Projects: front-load context once instead of every time
+The Concept 4 checklist above raises an obvious question: if AI needs to be briefed like a colleague every time, that is a lot of repeated typing. The answer most modern tools now ship is a feature called projects — a workspace you set up once, with the files, instructions, and audience that always apply to a kind of work, so every chat you start inside it inherits that setup automatically.
+
+When to make a project. The moment you notice you have pasted the same files, the same audience description, or the same constraints into two or more chats on the same topic. That is the signal: the context belongs in a project, not in a prompt.
+
+A few examples of what a project earns you:
+
+A "tax filing" project with last year's return, your W-2s and 1099s, and an instruction like "Assume I am a US filer with one dependent. Always show your math." Every question you ask in there starts from that base.
+A "kids' school" project with the syllabus and the school calendar, and an instruction like "Always check the date against the calendar before answering." Useful when "is there school on Monday?" comes up four times a year.
+A "writing voice" project with three samples of your writing and an instruction like "Match the cadence and word choice of the samples. Do not add hedging or qualifiers I did not use." Now every draft starts in your voice instead of generic-AI-voice.
+Connection to the context rot rule above. Inside a project, "start a new chat" no longer means losing what the AI knows about your situation — it means losing only the noise of the previous conversation. The standing files and instructions ride along. So the reset rule gets cheaper to follow: you reset the chat, not the context.
+
+Three tools, three names, one idea. Claude calls it Projects, ChatGPT calls it Projects, and Gemini calls it Notebooks (which sync with NotebookLM, Google's standalone research tool — anything you add in one shows up in the other). All three let you upload files, save instructions, and run many chats grounded in the same persistent context. They differ in emphasis:
+
+Claude and ChatGPT Projects tilt toward instructions and behavior. You set the voice, the role, the rules, the audience, and the model holds that persona reliably across every chat in the project. Best when how the AI responds matters as much as what it knows — writing in a specific voice, working on a codebase, maintaining a brand tone, anything where consistency of style is the point.
+Gemini Notebooks (and NotebookLM) go further on the source side. Drop in PDFs, Google Docs, web URLs, YouTube videos, even audio files, and every answer comes back grounded in those sources with inline citations you can click. The unusual part: the workspace flows both ways. Anything you put into NotebookLM appears in the same notebook inside the Gemini app, and any chat you have inside a Gemini notebook automatically becomes a source back in NotebookLM. So the workspace accumulates your own reasoning over time — last week's chat is one more source this week's chat can cite, which "connects the learning to the practicing" in a way the other tools do not. NotebookLM also generates Audio Overviews (podcast-style summaries you can listen to), Mind Maps, Flashcards, and Slide Decks built automatically from your sources. Best when you are studying, researching, or working through material over many sessions where each session should make the next one smarter.
+Quick rule of thumb. Reach for Gemini Notebooks / NotebookLM if the workspace will grow over time — study notes, ongoing research, anything where you want each session to feed the next. Reach for Claude or ChatGPT Projects if the workspace is built around a persona or set of instructions you want the AI to hold consistently across chats.
+
+What is available where, as of mid-2026:
+
+Tool	What it is called	Free tier?
+Claude	Projects	Yes — up to 5 projects on the free plan; files within each project are unlimited
+ChatGPT	Projects	Yes — free plan supports up to 5 files per project; paid plans raise this to 25 or 40
+Google	Notebooks (in Gemini) and NotebookLM	Yes — both are free; paid tiers (NotebookLM Plus, Gemini AI Pro/Ultra) raise the source limits
+Note the different shape of the free-tier caps: Claude limits how many projects you can have; ChatGPT limits how many files each project can hold. Plan your project structure around whichever cap will bite first.
+
+5. Reasoning, or "think hard"
+Until about 2023, the standard advice for hard prompts was "think step by step." That advice is now mostly obsolete. Modern models have built-in reasoning modes that you can invoke directly.
+
+How to invoke it:
+
+Ask for it in plain language. "Think hard" or "think carefully before answering" in your prompt. This is the portable move: it works across every modern chat tool, with no special syntax to remember.
+Use the thinking-mode toggle in the interface, where one is offered.
+On some products you do not have to ask at all: the tool decides on its own when a question is hard enough to warrant extended thinking, and turns it on for you.
+When extended thinking is on, the model can think for many seconds. On hard problems, sometimes more than ten minutes. It is not just typing slower; it is internally exploring multiple approaches, checking its own work, and only then writing the answer you see.
+
+A 2025 METR study tracked the longest task a frontier model could reliably complete. In mid-2024 a leading model handled tasks that take humans around seven minutes. By early 2025 that was up to roughly an hour, and the study found the length it measures has been doubling roughly every seven months. The implication for you: hand AI real, hard tasks, not just easy ones. It can handle more than your 2023 instincts suggest.
+
+A power-user pattern that uses this well:
+
+I'm choosing between two cars. Attached: spec sheets for both,
+my insurance quote for each, and a spreadsheet of my driving
+patterns over the last six months.
+
+Read everything. Think hard. Then tell me:
+1. The three trade-offs that actually matter for my driving pattern.
+2. Which car you'd choose and why.
+3. Under what conditions your recommendation flips.
+
+Three things this prompt does: it loads the relevant context, it explicitly invokes thinking, and it asks for structured output instead of a wall of prose. All three are habits.
+
+When NOT to use thinking mode
+Quick lookups, summaries of a paragraph, casual brainstorming. Thinking mode is slower and uses more of your usage budget. Save it for the questions where you would have wanted a human to take their time.
+
+That is what thinking mode is for: not faster, but able to handle the kind of multi-input, multi-trade-off question you would otherwise hand to a thoughtful colleague and wait two days for. The trade is real. You spend a few minutes of compute and a small amount of usage budget. You get back something you would have spent half a day producing yourself.
+
+The implication of that METR trajectory mentioned above: the tasks you mentally categorized as "too complex for AI" two years ago are mostly now tasks AI can handle, if you brief it well and turn on thinking mode. Re-test your assumptions about what AI can do every six months. They will be wrong.
+
+6. Sycophancy and how to neutralize it
+AI models are trained on human feedback. Specifically, on which responses got a thumbs up. Across millions of users, agreeing with people gets more thumbs up than disagreeing. The result: models are biased toward telling you what you want to hear.
+
+A November 2025 Washington Post analysis of 47,000 ChatGPT conversations found the model opened with an affirmation ("yes," "correct," and similar) about 10 times more often than it opened with "no" or "wrong." The reported openings clustered around phrases like "that's correct" and "you're on the right track."
+
+You can verify this yourself. Same model, opposite framings:
+
+"Don't you think remote work is better than office work?" → AI agrees, lists reasons.
+"Is it true that office work is more productive?" → AI agrees, lists reasons.
+The fix is not magic. It is just neutral framing. The pattern shows up at two levels: surface ("don't you think X?") and subtle ("find evidence that X works"). Watch for both in your own prompts:
+
+Subtle bait you might write	What it signals to the AI	Neutral rewrite
+"Find evidence that this strategy will work."	The conclusion is fixed; AI fills in support.	"Evaluate this strategy. List the strongest arguments for and against."
+"Why is approach A better than approach B?"	A wins; AI lists reasons.	"Compare approach A and approach B. Score each on cost, risk, and time."
+"Help me defend my decision to hire X."	Decision is locked; AI provides ammunition.	"Here is my decision and the context. What's the strongest counter-argument I should be ready for?"
+"Tell me my draft is ready to send."	AI tells you it is ready.	"Score this draft 1-10 on these 4 criteria. For each one, tell me the change that would raise the score the most. There is always a next level."
+"Confirm that this code is correct."	AI confirms.	"Find any bug, edge case, or unstated assumption in this code. If there are none, say so."
+The pattern: any phrasing that contains a verb like find, defend, confirm, prove, support hands the AI a conclusion before the question. Replace with verbs like evaluate, compare, critique, find any, list both sides. The model will still bias slightly toward agreement, but you have removed the loudest signal.
+
+The general rule: lay out two options without hinting at preference, then ask for pros and cons of each. If you find yourself writing "isn't X true," stop and rewrite as "to what extent, if at all, is X true?"
+
+This is mechanical, not deep
+This concept is the cheap version of a much deeper skill. The Thinking in AI Era Crash Course trains the deep version: how to formulate questions that surface what you do not already know. The neutral-framing trick gets you 80% of the way there for everyday use. The crash course gets you the rest.
+
+A non-software example. A founder asked AI: "I have a great business idea, mobile tie-dyeing for kids' birthday parties, critique it." The AI praised the idea warmly and listed reasons it might succeed. The founder then tried again with a rubric: "Analyze this idea objectively. For each of the following, score 1 to 10 and justify: (1) is there a real problem here, (2) is there a market willing to pay, (3) is there a competitive advantage, (4) what's the unit economics, (5) what are the top three reasons this fails." The same AI gave the idea 8 out of 100 and explained, in concrete terms, why the founder should rethink it. The first prompt was sycophancy bait. The second was an objective rubric. Same model, same idea, opposite verdicts. The difference was how the question was asked.
+
+The objective-rubric pattern. A rubric is just a list of specific things to check, each scored or answered separately. When you ask AI to evaluate something (a draft, a plan, an idea) without one, ambiguous criteria collapse into "great work." With one, specific criteria force the AI to actually look. Compare:
+
+Why rubric-based prompts work better: specific evaluation criteria reduce sycophancy and produce more honest feedback. Three examples compare vague prompts (score my sci-fi story out of 100, is this email professional, how is my workout plan) with rubric-based prompts that use structured yes/no checks and specific criteria.
+
+The image above shows the contrast: vague prompts collapse into praise; structured prompts with scores and yes/no checks produce real feedback.
+
+Force a number. A small but powerful add-on to the rubric pattern: for each criterion, require the AI to give a score on a fixed scale — 1 to 5, or 1 to 10 — with a one-sentence justification. This works for two reasons.
+
+The first is what the number does to the AI: vague feedback is cheap, but a specific number is not. A model that wants to please you can call your draft "strong" without committing to anything. The same model, asked to pick between 6 and 7 out of 10, has to commit, and the act of committing forces it to look more carefully. You will notice the difference immediately: scores tend to come in lower than the prose summary suggests they should, because the prose was sycophantic and the number is not.
+
+The second is what the number does for you. Adjectives like "strong," "solid," or "could be tighter" give you nothing to act on — you cannot compare them, prioritize them, or track them over time. Scores do all three. A 4 and a 7 tell you which criterion to fix first. Today's 6 versus last week's 5 tells you whether your second draft actually improved. The number is not just a more honest verdict; it is a unit of measurement you can use to make decisions.
+
+Grade each criterion out of 10, with a one-sentence justification. Then tell me how to take each one to the next level — including the ones that already scored high. If something is at 9, tell me how to get to 9.5. If it is at 9.5, tell me how to get to 9.8. There is always a next level.
+
+That last instruction is what turns the rubric from a verdict into a tool. You do not just learn the score; you learn the smallest move that would lift it — and crucially, that move exists at every level. The AI does not get to declare you finished. You decide when to stop.
+
+7. The brainstorm-iterate loop
+This is the single highest-leverage habit on this page. If you skip every other section, do not skip this one.
+
+When AI was trained on the internet, most of the internet was common ideas, not creative ones. So the average AI response on a creative question is also common. "Ways to exercise at home": squats, push-ups, planks. Not wrong. Just average.
+
+The way around this is not a magic prompt. It is a loop.
+
+The brainstorm-iterate loop: skip a step and you get slop, run the cycle and you ship. Step 1: Load context (all constraints, files, audience up front). Step 2: Demand 3-5 options (force alternatives, do not expand any yet). Step 3: Give explicit feedback (reject what, accept why). Iterate 2-3 times. Only then: Expand chosen option (now ask for the full draft). Most leverage lives in the loop, not the final draft.
+
+The recipe:
+
+Give all relevant context up front. Not just "ways to exercise"; "ways to exercise given that I have stairs in my home, a bad knee, and I cannot stick to plans for more than three days."
+Ask for 3 to 5 options, not one. Forcing alternatives pushes the model past its first instinct.
+Give explicit feedback. "I don't like option 1, it's too passive. I do like the stair-climbing idea but want it shorter. I forgot to mention my knee gets worse on impact."
+Ask for 3 to 5 new options informed by the feedback.
+Iterate until you have one or two you genuinely like.
+Then, and only then, ask AI to flesh out the chosen option in detail.
+Worked example, debt payoff:
+
+I have $8,000 in credit card debt at 19% APR, $4,000 in student
+loans at 5%, and $1,200 in a retail card at 24%. I have $700/month
+free after expenses. I just learned I'll get $450 in cash from a
+tax refund. Risk tolerance: low. I sleep badly when I see big
+balances.
+
+Give me 5 different repayment strategies, each with a one-line
+rationale. Don't expand any of them yet.
+
+Then, after reading the five options:
+
+Reject option 2 (avalanche by interest rate alone): I want
+psychological wins early. Reject option 4: I won't open new
+accounts. I like option 1 (snowball with the retail card first)
+but I'd want to fold the $450 in. Give me 5 new options that
+combine snowball-style wins with smart use of that lump sum.
+
+You are not waiting for the AI to read your mind. You are showing your taste; the AI reshapes the option space around it. After two or three rounds, you have one option that feels exactly right. Then ask for the full plan.
+
+The same loop works for writing, where it has its own name: outline before drafting.
+
+- Iteration 1: ask for 3 outline options for a post on X.
+- Iteration 2: pick one outline, ask AI to critique it and grade it out of 10. Note what scored below 9.
+- Iteration 3: revise the outline based on the critique, then ask AI to expand each heading into 3 to 5 bullets.
+- Iteration 4: critique the bullets, grade them out of 10, fix the ones below 9.
+- Iteration 5: only now ask for the full draft.
+- Iteration 6: critique the draft, grade it out of 10, ask for the changes that would raise the score the most — ranked by impact, with the highest-impact change at the top. Repeat until the score plateaus around 9.5 or higher — that is your stopping signal, not "the AI says it is done."
+
+
+Why this works: editing one word in an outline can change the direction of the whole article. Editing one word in a final draft changes one word. Almost all of the leverage in writing happens at the outline level. AI generates word-by-word from the start, so unless you force structure first, it cannot see the whole shape.
+
+Don't skip steps
+The temptation is to ask for the full draft on the first try. Resist it. AI's first draft of anything is slop: looks polished, says little. The loop — ten or twelve minutes of structural work before any drafting, then several rounds of grade-and-fix on top — turns a forgettable post into one that lands. The total time is rarely more than forty-five minutes for a 600-word piece. The first ten of those minutes save the other thirty-five from being wasted.
+
+A worked writing example. A team lead wants to write a 600-word post titled "Why our small AI team is shipping faster than the big team across the hall." Here is what each round of the loop looks like in practice:
+
+Round 1, research first:
+
+I'm writing a 600-word post arguing that small AI-augmented teams
+ship faster than larger non-AI teams. Don't write yet. First, give
+me the 5 strongest research-backed arguments and the 3 strongest
+counter-arguments. One sentence each.
+
+Round 2, three outlines:
+
+Now produce 3 different outline options for the post. Each outline
+should have 4-6 headings. They should differ in structure: one
+narrative, one analytical, one contrarian. One line per heading.
+
+Round 3, pick one and add an analogy:
+
+I'll go with outline 2 (analytical). I want to weave in a Pixar
+analogy: how the original Toy Story team was small and faster than
+the giant Disney studio because of new tools. Add this as a recurring
+example, not its own section. Revise outline 2.
+
+Round 4, expand to bullets:
+
+Now expand each heading into 3-5 bullets. Telegraphic style, not prose.
+
+Round 5, grade and fix the bullets:
+
+Critique each bullet and grade it out of 10 with a one-sentence
+justification. List the bullets scoring below 9. For each one,
+suggest the change that would raise the score the most.
+
+Only now does the lead ask for the full draft — and then keeps grading and re-iterating on the draft itself until the score plateaus around 9.5 or higher. The whole process takes about forty-five minutes. The output reads like the lead wrote it, because every load-bearing decision was the lead's. The extra thirty-five minutes over "write me a post" is what makes the difference between a draft no one finishes reading and a draft that lands.
+
+Scope the territory before drafting. The first round in that example ("don't write yet, give me the strongest research-backed arguments and counter-arguments") looks small but does heavy work. Most people skip it and ask for the draft directly. Skipping it is why their drafts feel thin: they're built on whatever ideas the model surfaces first, not on the actual landscape of the topic. One round of "scope the territory" before drafting is the difference between a post that quotes three studies and a post that lists three opinions. This pattern generalizes far past writing. Before any substantial decision, plan, or analysis, ask the AI to map what's known before asking it to produce what's needed. Competitive landscape before product naming. Prior research before a strategy memo. Existing approaches before designing a new one. The research pass takes five minutes and changes what every subsequent round of the loop is iterating against.
+
+The loop is domain-agnostic. It works the same way for: planning a trip, structuring a sales pitch, picking a college major, naming a product, writing a wedding toast, deciding on a renovation, choosing a charity to support. The shape stays constant: load context, demand options, give explicit feedback, demand new options, iterate, expand — and then grade and re-iterate until the score plateaus. If you find yourself accepting the AI's first answer, or stopping the moment something looks "good enough," you have skipped the loop. Whatever you are working on, it deserves the loop.
+
+A short table of where the loop fits across daily life:
+
+Decision or task	What "context" looks like	What "options with feedback" looks like
+Planning a 4-day trip	Constraints (budget, dates, who's going, what they hate)	5 itinerary skeletons; reject two; iterate the rest
+Naming a product	What it does, who buys it, what it must NOT sound like	10 names; pick 3 you like, ask for variants on those
+Writing a difficult email	The recipient, the relationship, the desired outcome	3 different tones; pick one, refine its specifics
+Choosing a contractor	Three quotes, three reference notes, your priorities	Side-by-side scoring; ask for the strongest counter to your favorite
+Picking a learning path	Current skills, time available, end goal	3 different curriculum shapes; pick one, expand to weekly milestones
+Designing a logo brief (for a designer)	Brand values, audience, examples you like	5 mood-board directions; pick one, ask for 5 variants in that lane
+In every row, once you have a concrete candidate (a chosen itinerary, a shortlisted name, a draft email), the grading move from the loop applies the same way: score it out of 10 against the criteria that matter for that task, then iterate. Grade an itinerary on cost, pacing, and group-fit. Grade a product name on memorability, fit, and risk. Grade an email on clarity, tone, and likely effect. The criteria change; the move does not.
+
+Part 3: Beyond text
+AI is not just a text box. It can see images, work with audio in both directions, build small working apps, and run code on your data. Most people never try any of it.
+
+8. Multimodal: images, audio, and what's next
+Modern AI handles images and audio in both directions: it can read images you upload, listen to recordings, generate new images from text prompts, and produce spoken audio. The skills are different across modalities, and worth learning separately.
+
+Image input. AI sees images coarsely. It is strong on:
+
+Overall scene and composition.
+Distinct, large object shapes (a giant human-sized hamster wheel treadmill).
+Whiteboard contents, including diagrams.
+Handwritten and cursive text (decent, double-check for high stakes).
+It is weak on:
+
+Fine details. "What gym machines are these?" tends to fail because gym machines look similar through a slightly blurry lens. The AI may answer confidently and wrongly.
+Counting many small things in a cluttered scene.
+Reading small print at the edge of an image.
+A useful real-world test: a teacher photographed a whiteboard where his head blocked the word "convolutional" in a neural network diagram. The AI inferred the missing word correctly from the rest of the diagram. That is what AI is good at: inferring from the gist. It is not good at zooming in.
+
+For receipts, splitting a bill, or transcribing handwritten notes, AI works well, but always double-check the totals. For multi-image inputs (post-its plus a whiteboard photo plus handwritten notes from a brainstorm), AI can summarize the combined ideas; this is genuinely useful and saves real time.
+
+Image output. Modern AI can generate images from text prompts. Two practical tips:
+
+Use a text AI to write your image prompt. "Generate me a prompt for a fantasy forest illustration in a Studio Ghibli style for a children's book cover." Take that output, paste it into the image tool. The text AI is much better at writing rich image prompts than you are on a first try.
+Build visual vocabulary. Words like cinematic, watercolor, cyberpunk, anime, isometric, low-poly, art-deco, claymation are levers. Image models were trained on captioned images and learned these styles by name. Upload images you like and ask AI how it would describe them. That trains your vocabulary.
+How image generation works: it is a diffusion model, trained to remove noise from random pixel grids step by step until an image emerges. Not pixel-by-pixel like text. The whole image is generated at once. That is why you cannot stop image generation early to save time, the way you can interrupt a text response.
+
+Older diffusion models had famous weaknesses: weird hands (six fingers), garbled text on signs, characters that change appearance from frame to frame in a comic. Modern models (such as Google's Nano Banana or ChatGPT Images) handle text reasonably, generate consistent characters, and can convert research papers into infographics.
+
+A short table of failure modes still worth watching for, even on modern image models:
+
+Failure mode	What it looks like	How to mitigate
+Garbled text on signs	The signage in the image reads "HAPRY BIRTDAY" instead of "HAPPY BIRTHDAY".	Specify the text in quotes in the prompt. Generate three variants. Pick the one where the text is right.
+Inconsistent characters across frames	The same character has different hair color in panels 1 and 2 of a comic.	Use models with explicit character-consistency support; pass the first image back as a reference for the next.
+Hand and finger errors	Six fingers, fused hands, twisted wrists.	Ask for compositions where hands are partially out of frame, or in pockets, or clearly described.
+Cluttered backgrounds with implausible objects	A coffee shop where a bicycle merges into a chair.	Specify a simple background, or describe the background explicitly.
+Wrong aspect ratio	The model defaults to square; you wanted landscape.	Always specify aspect ratio explicitly: "1024x768 landscape" or "16:9".
+A non-software example for image input. A reader photographed a stack of three handwritten recipe cards from a deceased grandmother and uploaded them to AI. The prompt: "Transcribe these three cards. Preserve the original wording and any abbreviations. If a word is unclear, mark it [unclear] and offer your two best guesses." Five minutes later, all three recipes were typed cleanly, with [unclear] marks on the four words the AI could not confidently read. The reader checked those four against the originals (two were obvious, two needed a phone call to an aunt), and the family had a clean digital archive of recipes that had been at risk of being lost. AI did the boring 90% so the reader could focus on the careful 10%.
+
+A power-user recipe: designer-quality diagrams without a designer. If you ever need to make a diagram for a document, a slide, or a chapter of your own, there is a workflow that produces designer-quality output in about fifteen minutes, without using Figma and without any visual design skill. Most non-designers do not realize this is now possible. It is the simplest way to produce designer-quality diagrams without learning a design tool. This section is more involved than anything else on the page; read it now if you make diagrams regularly, or skip it for the first time you need one.
+
+The recipe, in four steps:
+
+Ask Claude to visualize the concept as SVG. Paste the underlying paragraph or text. Ask: "Visualize this as a diagram. Output it as SVG. Make sure every label, arrow, and relationship from the text is present." Claude is a strong choice for this step because its reasoning ability is among the strongest of the major models: given a paragraph, it figures out the right boxes, the right arrows, the right hierarchy, and the right labels with very little guidance. The SVG it returns will be structurally correct but visually plain (bare rectangles, default fonts, no design polish). That is fine; the next step adds the polish.
+Convert the SVG to PNG. Ask Claude to render the SVG as a PNG (Claude can do this directly), or use any online SVG-to-PNG converter (cloudconvert.com, svgtopng.com), or just take a screenshot of the SVG rendered in a browser at high zoom. Render at 2× resolution (1600 to 2400 pixels wide) so the next step has enough detail to work with.
+Paste the PNG into ChatGPT (or Gemini) and ask it to redraw. ChatGPT's in-product image generation tends to be strong for this step because it is unusually good at text-heavy images: it preserves labels, gets typography right, and respects the structural relationships in the source. The prompt: "Redraw this diagram with professional design quality. Preserve every label, every box, every arrow, and the exact structural relationships. Improve typography, spacing, color palette, and visual hierarchy. The information must remain identical; only the visual finish changes."
+Iterate on the result. ChatGPT/Gemini sometimes drops a label or rearranges a box. Compare its output against the original SVG side by side. If something is wrong, just type the correction: "The third box should be labeled 'Iterate', not 'Repeat'. The arrow from box 2 should point to box 3, not box 4." Three or four rounds typically produces something that looks like it came from a professional design studio. Save the final PNG.
+Why each tool for each step. Claude tends to win step 1 because deciding what belongs in a diagram (which boxes, which arrows, which hierarchy) is a reasoning task, and Claude's reasoning is among the strongest of the major models for this kind of structured-thinking work. ChatGPT (or Gemini) tends to win step 3 because rendering text-heavy images well (labels that stay readable, arrows that connect to the right boxes, layouts that look designed) is the category where its image generation currently leads. Asking either tool to do the other's job produces noticeably worse results than chaining them. Each does what it is best at, in sequence.
+
+Total time: roughly ten to fifteen minutes per diagram, compared to an hour or more in Figma assuming you knew how to use it.
+
+The pattern that survives the tools. The leader in each category will rotate. Claude may not be the strongest reasoning model next year. Today's leading image model will be replaced by whatever ships next. The recipe above will go stale at the tool layer. What survives: structure first in the strongest reasoning model, polish second in the strongest text-heavy image model. Pick whichever tools lead each category at the moment you read this. The two-step chain is the move.
+
+A small story about image generation. A father whose 7-year-old daughter loved cats wanted a custom birthday cake for her. He used Nano Banana to brainstorm cake designs (generating dozens of variations: cat-shaped, multi-tiered, frosting-styles, color palettes), picked the one she loved, then handed the chosen image to a baker who rendered it as a real 3D cake. Total iteration time on the design: an afternoon. Total cost: a few cents in image generation.
+
+The point is not the cake. The point is that for ~$0.30 and an hour of taste-driven iteration, a person who is not a designer produced a one-of-a-kind brief that a professional could execute against. That is a new kind of creative leverage, and it is widely available.
+
+Audio in, audio out. The same shift that happened with images is now happening with audio. You can dictate a long prompt instead of typing it; you can drop in a meeting recording and ask for a summary; you can ask the model to read its answer aloud. Most modern AI tools support all three, often without an extra fee on free tiers.
+
+The non-obvious uses are where the real leverage lives:
+
+Long-form dictation. Talking through a problem out loud captures nuance that typed prompts skip. People who hate typing produce dramatically better prompts when they speak them: the prompt grows from one line to several paragraphs without effort, and the AI's answer is correspondingly better. Speak as if briefing a colleague over coffee, then let the AI clean up the resulting transcript before answering.
+Meeting transcripts as context. Drop in a one-hour meeting recording (or a transcript from one of the dominant 2026 vendors like Otter, Granola, or Fireflies, or your phone's voice memos) and ask: "Summarize the decisions made, the open questions, and the action items by owner." This is one of the highest-leverage workflows on the page for anyone in a job with meetings, and almost nobody outside of tech is using it yet.
+Audio for accessibility and movement. Long commute, walking the dog, driving: voice in/voice out turns dead time into thinking time. The conversation quality drops slightly versus typing because you cannot edit your input as cleanly, but the time you would otherwise have lost is recovered entirely.
+What audio is good and bad at, in 2026:
+
+Audio task	How well it works	Watch out for
+Transcription of clear speech	Excellent	Heavy accents, technical jargon, multiple overlapping speakers
+Speaker identification (who said what)	Decent on 2 speakers, weak on 4+	Always check before quoting someone
+Tone, sarcasm, emotion	Improving but unreliable	Ask the AI to flag its uncertainty rather than assume
+Music or non-speech audio analysis	Limited	Use a specialized tool, not a general-purpose AI
+Real-time voice conversation	Good for casual, weak for technical depth	Switch to text when precision matters
+A non-software example. A doctor recorded a 45-minute patient consultation (with consent), uploaded the audio, and asked the AI: "Produce a structured clinical note in SOAP format. Flag anything you could not understand confidently. Highlight the three most important things the patient said about their symptom history." Eight minutes later the doctor had a draft note that took her 5 minutes to verify and finalize, instead of the 25 minutes the typed version would have taken. The AI did not replace clinical judgment; it removed the typing.
+
+Cost note: audio in/out is the second-cheapest tier after text, pennies per minute (concept 12). For meeting summaries, daily voice journaling, or dictating prompts on a walk, the cost is essentially invisible. Iterate freely.
+
+A pattern worth keeping in mind: the future of multimodal is not "AI can do voice now, isn't that cool." It is that the boundary between modalities disappears. You will increasingly drop in a mixed bundle (an image, a voice memo, a PDF, a screenshot) and treat it as one prompt. The skill is not "how do I use voice" but "what is the right combination of inputs for this job?"
+
+Interactive video avatars are emerging on the same trajectory. Pre-recorded avatar video (HeyGen, Synthesia, D-ID) is already production-grade for training content and multilingual corporate communication. Real-time conversational avatars (Tavus and others) are passable for low-stakes uses today (customer FAQ triage, language tutoring with a face, simple onboarding flows) and improving fast. Treat them like image generation in 2022: impressive, novel, not yet a daily habit for most knowledge work, but worth a quick experiment when a job calls for a face on the screen rather than text.
+
+9. Building small apps with one prompt
+Modern AI can build small games, websites, and tools from a single prompt. Not yet for large software, but for small useful things, this is genuinely accessible to people who have never written code.
+
+Where the app actually runs. A reasonable first question: "if the AI builds me an app, where does it actually live?" The answer depends on the tool, and it changes often. Claude renders simple apps and games live in the chat, in a preview pane you can click and interact with. ChatGPT can also render some one-prompt apps inline, though some of its surfaces just show you the code in a side editor rather than running it. Gemini often returns the code with a button to run it in a Google playground. For anything more complex, the AI gives you the code and tells you where to paste it (a free service like CodeSandbox or StackBlitz runs it in your browser, no installation needed). Rather than memorize which tool does what, just ask for "a working version I can click on right now in this chat" and see what comes back.
+
+The recipe is just three slots:
+
+Goal: what should this thing do?
+Input: what does the user provide?
+Output: what does the user see?
+
+Examples that work today:
+
+Pomodoro timer. "Build a Pomodoro timer with a yellow theme. 25-minute work sessions, 5-minute breaks, a satisfying click when each cycle ends."
+Bill splitter. "Build an app where I enter a total bill, a tax amount, and the names of friends. It splits the bill including tax and shows each person's share."
+Outfit picker. "Build an app that takes today's weather (temperature and precipitation) and recommends an outfit from a closet of items I describe."
+Fireworks simulator. "Generate a fun fireworks simulator. Input: I click on the screen. Output: a colorful display of fireworks at the click point."
+Place-obstacles game. "Build a game where the user places obstacles and a goal, and runs a simulation that tries to reach the goal."
+What is still hard:
+
+Multiplayer over the internet. Networking, accounts, and matchmaking are still beyond a one-prompt build.
+Live AI feedback in a different language. A French-conversation tutor that listens, corrects pronunciation, and adapts in real time is genuinely hard.
+The intuition you build: small things that fit on one screen, with no accounts and no external services, work. Anything beyond that needs more than one prompt, and usually some real engineering.
+
+A non-software example. A parent built a yellow cat-themed typing game for his daughter when her teacher mentioned the kids could type faster. He is not a software engineer. The prompt was three sentences:
+
+Build a typing game for a 7-year-old. Goal: practice typing
+common short words. Input: words appear, the player types them
+before they reach the bottom of the screen. Output: a yellow
+theme, a cute cat mascot that cheers when the player gets a
+word right, increasing speed across levels.
+
+What came back worked. Not perfectly, not on the first try, but iterated to "good enough for a kid" inside an hour. The skill being built here is not coding. It is the ability to write a clear brief and iterate it. That skill is universal.
+
+10. Data analysis (the model writes and runs code)
+When you ask AI a question that needs calculation or graphing, modern tools quietly do something remarkable: the model writes code, runs it, and returns the result. Code execution is just another tool the model can call, like web search.
+
+This is much more reliable than asking the model to do math in its head. The model is doing math the way you would: by running a calculator. It is the calculator that is precise; the model is just choosing what to compute.
+
+Bubble tea shop example. A small business has a year of sales data: drinks, dates, quantities. The owner asks: "Which drinks had the biggest changes in sales over the year? Graph them."
+
+The AI looks at the spreadsheet, writes code to compute month-over-month changes per drink, observes that most drinks are flat and four stand out, generates a colored line graph of those four, and notes the patterns. "Strawberry matcha rose sharply in spring; consider re-running that promotion next year." That is not a generic answer. That is an answer grounded in the actual data.
+
+Then a longer prompt: "Create a one-slide year-in-review graphic for the shop. Analyze the data carefully for insights worth featuring." This triggers minutes of thought; the AI writes code, runs analyses, picks insights, designs annotations, and produces a finished dashboard.
+
+What this is good for:
+
+Spreadsheet analysis (running tracker, sales records, budget files, lab data).
+Quick graphs of trends that you cannot see by squinting at rows.
+Aggregations and comparisons that would take you 20 minutes in Excel.
+What to double-check:
+
+Final totals. Code is precise, but the AI may have summed the wrong column.
+Labels on graphs. The numbers are usually right; the captions are sometimes confidently wrong.
+Anything where the analysis depends on a column the AI may have misinterpreted.
+Reliability is much higher than memory-based math, but it is not infallible. Treat AI data analysis the way you would treat work from a sharp junior analyst: useful, fast, almost always right, occasionally wrong in instructive ways.
+
+A non-software example. A runner uploaded six months of running-tracker data (a CSV from a fitness app) and asked: "How are my pace and distance progressing? Are there any patterns I should know about?" The AI wrote code, plotted weekly averages, and noticed two things the runner had not: pace consistently dropped after every long-run weekend (likely fatigue), and distance plateaued in the third month before climbing again. The recommendation: a deload week every fourth week, and a slower long-run pace. The runner had stared at this same data in the app's dashboard for months without seeing those patterns. AI did not invent insight from nothing; it computed what the runner did not have time to compute.
+
+A useful pattern: ask for the chart it would draw
+When you upload data, your first prompt does not have to be the question. It can be: "Describe this dataset. What columns are here, what do they represent, and what 3 charts would best show what is going on?" Read the answer, pick the chart you want, then ask for it. This catches misinterpreted columns before they become wrong analyses.
+
+Part 4: Working safely and choosing tools
+Two final concepts that change what AI can do for you, and how to pick the right tool for the job.
+
+11. AI desktop apps and permissions
+There is now a whole category of products called AI desktop apps: apps that run on your computer and, with permission, can find your files, read them, and act on them. Cowork (Anthropic's product) and Microsoft Copilot are two examples, and the category is growing.
+
+What these can do that chat cannot:
+
+Look through a messy folder of PDFs, propose a new organization (rename files, move them, create subfolders), and execute the plan once you approve.
+Pull together related files for a project (you say "I'm filming on these dates and these people are involved"), and notice things on its own (a crew member's birthday falls during the shoot, do you want to fold in a celebration).
+Read across a folder and summarize: "what did I work on last quarter, based on the contents of this projects/ folder?"
+The workflow that makes this safe:
+
+Tell it the task. ("Reorganize this folder by client.")
+Ask for a plan, not action. The app proposes a list of file operations.
+Review and edit the plan. Catch the rename you do not want before it happens.
+Only then approve execution.
+Read this before you give any AI app file access
+Two facts most people learn the hard way:
+
+Deleted files often do NOT go to your recycle bin when an AI app deletes them. They are gone.
+Edited files do NOT keep an edit history unless you have version control. The AI's change overwrites the previous version.
+Until you have done this safely a few times, scope every permission request to the smallest folder needed for the task. Do not approve "full disk access" for an app you have used twice.
+
+This is a genuinely new shape of tool. Treat it that way: like the first time you handed a junior employee the keys to a real account. Useful, fast, and worth being careful with.
+
+A non-software example. A consultant had a folder called clients/ that had grown to 240 PDFs over four years: contracts, invoices, scoping documents, hand-scanned receipts, meeting notes. She told an AI desktop app: "Look through clients/. Propose an organization scheme. Do not move any files yet. Show me the proposed scheme as a tree." The app produced a clean tree: one folder per client, sub-folders for contracts, invoices, and notes, with a flagged list of 18 files it could not confidently classify. She edited the proposal (renamed two clients, merged two folders), then approved execution. Total time: about fifteen minutes. The same job had been on her "someday" list for three years. The unlock was not the AI doing the thinking; it was the AI doing the tedium so the thinking became cheap.
+
+The permission ladder. A useful sequence for getting comfortable:
+
+Comfort level	What to allow	What to keep saying no to
+First sessions	Read-only access to a single small folder.	Anything that writes, deletes, or renames.
+After 2-3 successful runs	Read and write inside one specific folder.	Access to broader directories like the desktop or documents root.
+After a clean week	Read across a project tree, write inside a scoped subfolder.	Anything outside that project.
+Trusted	Tool-specific permissions ("rename PDFs in this folder," "edit Word docs in this folder").	Open-ended "do whatever you need."
+The principle: scope grows with track record, not with how much you trust the company that built the tool. Trust is earned by behavior in your specific workflow.
+
+12. Cost, speed, and which model to use when
+A simple stack to keep in your head:
+
+Cost and speed by modality, shown as a horizontal bar chart with four tiers stacked vertically. Text iteration takes seconds and costs fractions of a cent, so you can iterate 50 times in an afternoon. Speech costs a few cents per minute. Images take tens of seconds and several cents per generation, with no early-stop. Video takes minutes per clip and costs many cents to dollars, with painful iteration. Video iteration costs roughly 16 times more than text. Costs are trending down year over year, so the bar lengths will shrink but the ordering will not.
+
+In words:
+
+Text: seconds, fractions of a cent per response.
+Speech: seconds, a few cents per minute of audio.
+Images: tens of seconds, several cents per generation. No early-stop, the whole image generates at once.
+Video: minutes per generation, many cents to a few dollars. Iteration is painful because each round is slow and expensive.
+Deep research: minutes, several cents to a quarter, but synthesizes dozens of sources for you.
+Two implications:
+
+Iteration cost shapes what you do. You can iterate on text 50 times in an afternoon. You cannot iterate on video 50 times in an afternoon. So when you generate images or video, invest more in the prompt up front (and use a text AI to write it).
+Costs are trending down. The image that costs you 10 cents today will cost a fraction of that next year. Generating art for your home, a birthday card, or a wedding invitation is rapidly becoming free.
+Which model for which task? AI is jagged: different models are good at different things, and the leader changes every few months. There is no single best model. Two habits help:
+
+Try the same prompt in 2 to 3 models routinely. Same question, three tools. Read all three answers. The differences will surprise you, and they update your intuition about which tool is best for which kind of question.
+Don't marry one tool. A worker who only uses one AI is a worker who is wrong about which tool is best for two-thirds of their tasks. Switching is free; you just paste the prompt in a different tab.
+The best AI for your task today is not the best AI for your task in three months. Stay loose.
+
+A rough snapshot of what each major model tends to be good at right now (this will change; treat it as a starting point, not a verdict):
+
+Tool	Tends to be strong at	Tends to be weaker at
+ChatGPT	Conversational range, image generation in-product, broad task coverage.	Sometimes verbose; can over-format with lists and headings.
+Claude	Long-document understanding, careful reasoning on hard prompts, writing voice.	In-product image generation is less central than competitors.
+Gemini	Fast web search and source synthesis, deep research with rich output (charts, tables), tight integration with Google's data.	Tone can feel more clipped; some responses lean shorter than ideal.
+Three habits that compound:
+
+Have at least two tabs open. A primary tool and a backup. When the primary gives you something that does not feel right, paste the same prompt in the backup. The second answer is often the tiebreaker.
+Keep a prompt scratchpad. A note file (any text file works) where you collect prompts that produced unusually good results. Reuse and adapt them. This is your personal library.
+Notice when the model is wrong. Not as scolding, as data. Wrongness is a free signal about where this tool's edges are. Logging "tool X confidently wrong about Y" once a week is more useful than reading any 2,000-word AI newsletter.
+A small ritual that pays off
+Once a month, pick one task you do regularly (writing weekly status updates, planning meals, summarizing a recurring document). Run that task through three different AI tools. Note which one did it best. Use that one for that task until next month, when you re-test. Your tooling stays current without effort.
+
+13. Models checking models
+When there is no ground truth (no answer key, no expert sitting next to you, no test that fails red), you can still get an objective signal on quality. You get it by making models grade each other.
+
+Start with the light version. If you only have one AI tool open today, the single-model self-critique loop (covered just below) gives you most of the benefit, and it is the version most everyday tasks need. The full multi-model recipe that follows it is the high-stakes version: it assumes a second free account open in another browser tab, about a minute of setup, and it is worth that setup only when being wrong is expensive. Read the full recipe now for the shape, but reach for the lighter version first; graduate to the heavier one when something on your desk actually earns it.
+
+Different models have different blind spots. They were trained on overlapping but not identical data, with different reward signals, by teams that emphasized different things. A point one model misses, a second model often catches. The disagreement between them is the signal you cannot get from any single model alone.
+
+Here is the full multi-model recipe, refined over many documents and written from real practice. This is the high-stakes version; the lighter single-model loop is in the next subsection:
+
+Start with the best model you have access to. "Best" means the one with the strongest reasoning and long-output coherence on your kind of task. Use multiple signals: public leaderboards as a starting point (Arena, livebench, independent benchmarks), and your own quick A/B test on a representative sample. Do not anchor to one leaderboard alone; they measure different things, and preference-based rankings reward conversational charm more than careful work.
+Generate the first draft with full context. Brief it like a colleague (concept 1), turn on thinking mode for hard problems (concept 5), use the brainstorm-iterate loop for structure (concept 7).
+Ask it to grade its own output, 1 to 10, against named criteria. Not "is this good?" but "score this on clarity, accuracy, structure, and what is missing, 1-10 each, with a one-sentence justification per score." The first grade is usually 7 or 8.
+Ask it to implement its own suggestions. Repeat until the grade stops climbing, which usually plateaus around 9.
+Take the draft to a second model. Ask for the same rubric. Different model, different priors, different blind spots. The second model will catch things the first model graded itself on, which is exactly the closed loop you need to escape.
+Bring the second model's critique back to the first model. Frame it honestly: "another model produced this critique. Evaluate which points are worth adopting, and why. Reject anything you disagree with, and explain." The first model adjudicates. You watch the adjudication.
+For high-stakes work, repeat with a third model from a different family. Different family, different training data, different temperament. By the time three models have argued over your draft, you have the closest thing to triangulated truth that this technology offers.
+Stop when the score crosses your target across two independent models. A 9.5 from your primary model alone is not the same as a 9 from your primary plus a 9 from a different model. The second number is the one that means something.
+The single-model self-critique loop, by itself
+Steps 3 and 4 above are usable on their own, without ever bringing in a second model. Many tasks do not justify the multi-model overhead but still benefit from one round of "score this 1-10 against this rubric, then implement your own suggestions." A weekly status update, a slightly tricky email, a one-page memo: all of these get visibly better from one self-critique pass.
+
+A higher-leverage variant: set a numerical target and let the model iterate autonomously toward it. Instead of "score this and tell me what's missing," try "iterate against your own rubric until you reach 9.5 across all criteria, then show me the final version." The model will grade, revise, regrade, revise, and keep going (five or six rounds in a single response) and only return to you when it hits the target or plateaus. This is dramatically faster than driving each round manually, and it works especially well for long-form artifacts (a 5,000-word memo, a chapter, a comprehensive plan) where round-tripping by hand would be tedious. The target itself is a steering mechanism: 9 forces a different ceiling than 9.5, and 10 forces the model to keep finding things to improve until it genuinely cannot find any.
+
+This may sound like it contradicts concept 6, which warned that a model grading its own work tends toward sycophancy. The difference is the rubric. Without one, "is this good?" returns "great work!", which is the closed loop concept 6 was about. With named criteria scored 1-10, the model has to point at what is missing from the other points, and that pointer is what you implement against. The rubric is what turns the self-grade from sycophancy into a forcing function.
+
+The page now offers three nested versions of the same DNA. Pick the lightest one that fits the job:
+
+Three nested versions of the cross-model technique, shown left to right with increasing complexity. Level 1: Concept 6 rubric critique - one pass, stop there - for quick sanity checks. Level 2: Single-model self-critique loop - score, implement, repeat, plateau around 9 - for drafts and emails. Level 3: Multi-model loop - the self-critique loop plus a second and third model cross-checking - for high-stakes work. Graduate from lighter to heavier when being wrong gets more expensive.
+
+Graduate from the lighter version to the heavier one when being wrong gets more expensive, or when the single-model grade plateaus around 9 and you want to know whether 9 is actually 9.
+
+Why the grade matters. Forcing a number out of the model is not about the number. It is about what producing the number requires. A model that has to score your draft 7/10 has to name what is missing from the other 3 points. Without the score, "this is pretty good" passes for review. With the score, "pretty good" has to become "loses 1 point on structure because the third section repeats the second; loses 2 points on evidence because three claims have no source." The grade is a forcing function for specificity, and specificity is what you can act on. It is also the only readable signal you get to compare iteration N against iteration N+1.
+
+An honest caveat. Three models can still all be wrong about the same thing. They share more training data than you would guess, and on contested or sparse-data topics (concept 2) they often share the same misconceptions. The score is a progress signal, not a truth signal. For high-stakes content (anything legal, medical, financial, or about a real person) no number of cross-model passes replaces a human expert reviewing the load-bearing claims. Models check each other for craft. Humans check the facts that matter.
+
+When to skip the loop.
+
+Not every task earns this. A short email, a quick lookup, a casual brainstorm: single-model is fine. Save the multi-model cross-check for work where being wrong is expensive: a memo your boss will read, a chapter that will be published, a decision that affects other people, a contract you will sign. The rule of thumb: if a thoughtful colleague would have spent two hours reviewing this, it earns the loop.
+
+A non-software example. A consultant preparing a 40-page strategy memo for a client board drafted in her strongest model and iterated against its own grades until they plateaued at 9. She then pasted the full memo into a second model and asked for the same rubric. The second model gave it 7.5 and listed eleven specific issues, three of which her primary model had not raised in any of its own self-grading rounds. She fed those back to the first model to adjudicate; it adopted seven and rejected four with reasons. A third model surfaced two more. The point is not the final scores. It is that the counter-arguments she would never have seen on her own, because her primary model shared her blind spots, were in the memo before the board meeting.
+
+A short recap before you try the prompts
+Thirteen concepts is a lot. The shape of the page, one line per concept:
+
+Concept 1. The gap between a novice prompt and a power-user prompt is a handful of habits: brief AI like a smart new colleague, with context, constraints, and a clear ask.
+Concept 2. AI knows things from a snapshot of the internet — it learned by reading text about the world, not by experiencing the world — so it's strong on common topics and weak on obscure or recent ones.
+Concept 3. Three retrieval modes: pretrained, web search, deep research. Your wording steers which one fires.
+Concept 4. The model has no memory of its own; the context window is its working memory for this response. The single biggest determinant of answer quality is what you put in that window — and projects let you front-load it once instead of every time.
+Concept 5. Modern models can think hard for seconds or minutes if you ask them to.
+Concept 6. Models are biased toward agreement. Neutral framing and rubrics neutralize most of that bias; forcing a 1-10 score per criterion, with the change that would raise each score, neutralizes the rest.
+Concept 7. The iterate-with-explicit-feedback loop is the highest-leverage habit on the page. Grade each stage out of 10 and re-iterate until the score plateaus — the AI does not get to declare you finished.
+Concepts 8–10. AI can see images, work with audio in both directions, build small apps, and run code on your data.
+Concept 11. There's a new category of file-aware desktop apps. Scope permissions tightly until you've used them safely.
+Concept 12. The right tool for a job changes every few months. Keep two tabs open.
+Concept 13. When no human expert is in the room, making models grade each other is the closest thing to an objective quality signal.
+Underneath all of that is one move, repeated in a dozen disguises: get the right context in, keep the wrong context out. If you never remember a single thing from this page except that sentence, you will still be in the top quartile of users.
+
+Try this now: eleven prompts before deepening into thinking discipline
+Reading is a placeholder for trying. Open Claude, ChatGPT, or Gemini in another tab. Run these eleven prompts in order. They take about twenty-five minutes total and exercise every concept in this page.
+
+1. Web-search trigger. Forces the AI to leave its training data and look up current info.
+
+What major news happened today in [your country]? Cite each claim
+with a source link. Flag any claim you can't support with a citation
+as "unverified".
+
+2. Pretrained-only question. Common-knowledge, no lookup needed. Should be fast and confident.
+
+Why do cats stare at walls? Two-paragraph answer.
+
+3. Context-rich personal prompt. Practice loading constraints up front.
+
+Plan a 15-minute home workout for me. Constraints: I have stairs
+in my home, a bad knee (no squats), I cannot stick to plans for
+more than three days, and I want to feel slightly silly while
+doing it. Give me 3 options, no commentary.
+
+4. Neutral-framing rewrite. Practice spotting your own bias in the prompt.
+
+The question I want to ask is: "Don't you think four-day work
+weeks are obviously better for everyone?" Rewrite this as a
+neutral question that doesn't signal what answer I want.
+Then answer the rewritten version.
+
+5. Three-options brainstorm with iteration. The core power-user loop.
+
+Round 1: I want to start a small side project that takes about
+3 hours per week and might make money in a year. I'm a [your
+profession] who likes [your hobby]. Give me 5 different ideas,
+one line each. Don't expand any of them.
+
+(Read the 5. Pick what you like and don't like. Then, in the
+SAME conversation:)
+
+Round 2: I reject options [N] and [N] because [reason]. I like
+the [keyword] idea but I want it to use less [thing]. Give me
+5 new options that incorporate this feedback.
+
+6. Outline-first writing. Force structure before prose.
+
+I want to write a 600-word post about [a topic you care about].
+Don't write it yet. Give me 3 different outline options, each
+with 4-6 headings. One line per heading.
+
+7. Think-hard reasoning prompt. Use a real personal decision.
+
+I'm choosing between [Option A] and [Option B] for [real personal
+decision in your life]. Here's the relevant context: [a paragraph
+of context]. Think hard before answering. Tell me:
+1. The 3 trade-offs that actually matter.
+2. Which you'd choose and why.
+3. Under what conditions your recommendation would flip.
+
+8. Grade-and-improve critique. Avoid sycophancy on your own work.
+
+I'm pasting in something I wrote: [paste anything 100-300 words].
+
+Critique it using these 4 criteria, each scored 1-10 with a
+one-sentence justification:
+- Does it have a clear central claim?
+- Is each paragraph in the right order?
+- Are there any sentences that could be cut without loss?
+- Does the ending earn the time the reader spent getting there?
+
+Then, for each criterion, tell me the change that would raise
+its score the most. There is always a next level — even a 9
+has a path to 9.5.
+
+9. Image-input task. Practice giving AI a photo to read.
+
+[Upload any handwritten note, receipt, or whiteboard photo]
+
+Transcribe what's written. Then summarize what it's about in
+3 bullets. Flag anything you couldn't read with confidence.
+
+10. Small-app prompt. Practice the Goal/Input/Output shape.
+
+Build me a Pomodoro timer.
+Goal: 25-minute work sessions, 5-minute breaks.
+Input: I press start.
+Output: Visible timer counting down, a satisfying click when
+each cycle ends, a yellow theme. Show me the working version.
+
+11. Cross-model review. Practice the multi-model habit on a real draft. Requires two AI tools open at once.
+
+Take any 200-300 word draft you wrote recently (an email, a memo,
+or a paragraph from one of these exercises).
+
+Step 1: In your primary AI tool, paste the draft and ask: "Score
+this 1-10 on clarity, structure, evidence, and what's missing.
+One-sentence justification per score."
+
+Step 2: Open a second AI tool. Paste the same draft, ask the
+same question.
+
+Step 3: Compare the two scores and the two critiques side by
+side. Note any point only one of them caught. Those are the
+points the cross-model loop pays for.
+
+You now know what these tools can do. Whether you can think clearly enough to direct them is a separate question, and it is the question the Thinking in AI Era Crash Course is built around.
+
+This page taught the mechanics of using these tools. The Thinking in AI Era Crash Course teaches the discipline that makes the mechanics pay off:
+
+A deeper version of Concept 6 — how to formulate questions that surface what you do not already know, well beyond the neutral-framing and grade-out-of-10 tricks here.
+A deeper version of Concept 2 — confident AI answers are not the same as correct answers, with repeatable techniques for catching the failures the surface tricks miss.
+A deeper version of Concept 7 — the brainstorm-iterate-grade loop is one move in a much larger collaboration playbook.
+And skills this page does not touch at all: systems thinking, first principles reasoning, ethical reasoning, decision-making under uncertainty, and learning how to learn.
+When you are ready, head to the Thinking in AI Era Crash Course. Power tools without judgment make confident mistakes faster, and deliberate practice is the only honest way to find out whether your judgment is improving.

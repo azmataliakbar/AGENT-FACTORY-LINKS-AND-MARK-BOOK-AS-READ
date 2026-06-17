@@ -1,0 +1,123 @@
+https://agentfactory.panaversity.org/docs/getting-started
+
+Quick Start: Crash Courses
+
+Where to Start: Become an Agentic AI Engineer in Days, Not Months
+You don't have months to learn AI. Good news: you don't need them.
+
+This section is the shortest path from beginner to shipping Agentic AI Engineer — measured in days, not semesters.
+
+Productive in about 6 hours. Foundations (Courses 1–2) plus your first mode course (Course 3, 4, or 7).
+Shipping your first Digital FTE in a weekend. Courses 7–9, end to end.
+Fluent across the full Agent Factory stack in a month of focused evenings. All sixteen courses, governed by evals, deployed to the cloud.
+Why This Works
+Anyone who has ever joined a new job with little background and survived knows the pattern. First, you get an overview of the work. Second, you identify the few topics that are critical to actually doing the job. Third, you learn the 80% of each topic that gets used routinely, you start working, and you pick up the rest as you go — with reference material at your elbow. In this book, that reference is every chapter in the book — each one written to be read when you hit a gap.
+
+The three-step pedagogy: overview, find what matters, then cover the critical 80% and ship while picking up the rest through real use
+
+Trying to learn every detail of every topic up front takes months. You would burn out before you shipped anything. Our pedagogy is built on the opposite philosophy: cover the critical 80%, get you working, and let the rest fill in through real use. Every crash course in this section is designed exactly that way.
+
+A note on this book. The crash courses in this section get you working fast. The chapters in the book are your post-course reference — written to be returned to whenever a gap shows up in real work.
+
+Start with the Thesis
+Read the thesis first. It comes in two versions — one for technical and business professionals, and one for absolute beginners — so everyone can follow regardless of background. After the thesis, the Foundations come next: Course 1 on prompting and Course 2 on thinking. Every reader takes these before picking a mode.
+
+The mental model you'll need: work in the AI era happens in three layers. You use general agents to solve problems. You build AI Workers to do specialized jobs. You assemble those Workers into AI-Native Companies. Every professional engagement starts the same way — a human directing a general agent. The only question is which agent, which depends on what you're trying to accomplish.
+
+A quick naming note. Throughout this book, AI Worker, Digital FTE, and AI Employee refer to the same idea — a specialized agentic system doing a real job under human-defined policy. We use Digital FTE when emphasizing business value, AI Worker when emphasizing implementation, and AI Employee when emphasizing role inside the company. For any other unfamiliar term, the glossary is your friend.
+
+Your Journey
+Here is the arc, from where you are now to where this section gets you:
+
+Your journey from Beginner to AI-Native Company Architect, in six stages
+
+You don't have to walk the whole path. Most readers stop at stage 3 or 4, and that's enough for a serious career or a first startup. The full path is there if you want it.
+
+Pick Your Mode
+The thesis section The Two Modes of General Agent Use describes the two ways people actually use general-purpose agents. Mode 1 if you want to use AI to do your work. Mode 2 if you want to build AI that does the work for you. The label "Manufacturing" sounds industrial, and it is — building Workers is a different discipline from using them.
+
+Mode 1 versus Mode 2: in Mode 1 the agent does the work; in Mode 2 the agent builds a Worker that does the work
+
+Mode 1 — Problem-Solving	Mode 2 — Manufacturing
+Pick this if you...	Want AI to help you do work faster	Want to build AI Workers that do work for you
+Who it's for	Anyone — engineers or knowledge workers	Engineers (or a knowledge worker paired with an engineer)
+Your tool	Claude Code/OpenCode or Claude Cowork/OpenWork	Claude Code/OpenCode for building; the course pages teach concepts you read on your own first, then ask the agent to build
+Start with	Course 3 (engineers) or Course 4 (knowledge workers)	Course 7 — Build AI Agents
+You produce	Completed work	A Worker that produces work, on its own
+Governed by	Seven Principles of Problem Solving	Seven Invariants of the Agent Factory
+A note on Mode 1. If you want to push Mode 1 further and deploy a personal AI assistant that runs your daily workflows on its own, follow OpenClaw with General Agents (Course 6) after the principles course.
+
+A note on Mode 2. The general agent's output is not the outcome — it is the Worker that produces the outcome. A developer uses Claude Code to spec, build, and deploy a code-reviewing Worker. A finance analyst, paired with an engineer, uses Claude Code to spec a close-process Worker that runs every month-end. Same tool, same discipline, different domain.
+
+Your Starter Path
+If the Mode picker still feels abstract, here is the same decision in fully concrete terms — pick the row that fits you and start with the leftmost course. Every path begins with the universal Foundations (Courses 1–2).
+
+You are...	Your starter path	First milestone
+Absolute beginner	Thesis → Course 1 (Prompting) → Course 2 (Thinking)	Foundations laid; continue with a mode below
+Knowledge worker	Foundations (Courses 1–2) → Course 4 (Cowork) → Course 5 (Principles)	Ship real knowledge work with AI
+Engineer	Foundations (Courses 1–2) → Course 3 (Claude Code) → Course 7 → Course 8 (FTE)	Ship your first Digital FTE
+Workforce builder	The Engineer path, then Course 10 (Paperclip) → Course 13 (Evals) → Course 14 (Deploy)	A governed AI workforce, deployed to the cloud
+The Courses
+The fastest path to a shipped Digital FTE: Foundations (Courses 1–2) → Course 3 → Course 7 → Course 8 → Course 13 (Reader track). About 12 hours of focused work. The remaining courses turn that Digital FTE into a governed workforce — but you don't need them to ship your first one.
+
+Total time by depth: Mode 1 (productive with AI) ~5h · Mode 2 minimum (first Digital FTE) ~12h · Mode 2 full (governed workforce) ~25h · Full Agent Factory mastery ~45h (with the cloud deployment course).
+
+Before you dive in, two prerequisites everyone shares: modern AI prompting and learning how to think in the AI era. After that, the path splits by mode.
+
+Foundations (Everyone)
+AI Prompting in 2026 — A 45-minute, 13-concept primer on using ChatGPT, Claude, and Gemini well in 2026: context, reasoning modes, deep research, multimodal, and AI desktop apps. The mechanics every chapter of this book assumes you already know.
+
+How to Think in the AI Era — Under development. The cognitive discipline that separates people who get real value from AI from those who don't: when to reach for an agent, when not to, and how to frame problems so an agent can actually help.
+
+General Agents (Pick Your Co-Worker)
+These are the general-purpose agents you'll direct in every mode that follows. Engineers pick the coding agent; knowledge workers pick the desktop co-working agent. Both are reused in Mode 2 — they aren't Mode-1-specific, they're the tool layer beneath every mode.
+
+Agentic Coding Crash Course: Claude Code and OpenCode — A 90-minute, 15-concept tour of Claude Code and OpenCode. Same vocabulary, slightly different keybindings; skills transfer cleanly between the two tools. The general-agent starting point for engineers.
+
+Cowork Crash Course — A 90-minute, 15-concept primer on Claude Cowork: delegating real desktop knowledge work, the autonomy ladder, prompt-injection defenses, and the plan-review habit that prevents most regrets. The general-agent starting point for knowledge workers.
+
+Mode 1 — The Problem-Solving Track
+Problem Solving with General Agents — A 90-minute, 7-principle crash course in the operating discipline that turns any general agent — Claude Code, OpenCode, Cowork, or OpenWork — from a clever toy into a tool you can ship real work on. The seven principles apply across all four tools: Bash as the key, code as the universal interface, verification as a core step, small reversible decomposition, persisting state in files, constraints and safety, and observability. Includes the four-phase workflow — explore, plan, implement, commit — and a capstone exercise.
+
+OpenClaw with General Agents — A 90-minute, 6-scenario hands-on course where your general agent installs and configures a Personal AI Employee on OpenClaw: from zero to an AI Employee on your phone, with one custom skill, one MCP tool, one heartbeat task, and a closing ACP-spawn demo where the AI Employee summons a coding agent of its own. Karpathy's "little skill," expanded. Prereq: Course 3.
+
+Mode 2 — The Manufacturing Track
+The manufacturing path runs end-to-end in seven moves: build the Agent, promote it to an Employee, connect Employees with a nervous system, add management, make hiring dynamic, free the founder, and prove the whole workforce is measurably trustworthy with evals. Without that last move, manufacturing is unprovable — Workers you can't measure are Workers you can't actually ship.
+
+Build AI Agents Crash Course — A 90-minute, 16-concept primer on the OpenAI Agents SDK: agent loop, tools, sessions, streaming, handoffs, guardrails, tracing, day-1 evals, human approval, sandboxed deployment on Cloudflare, and DeepSeek V4 Flash for cost discipline. Prereq: Course 3.
+
+From Agent to Digital FTE — A 4-hour workshop on turning a basic agent into a durable Worker: portable Skills, Neon Postgres with pgvector as the system of record, the Model Context Protocol as the wire between them, audit-trail discipline, approval as the authority model, and a worked customer-support Worker built end-to-end. 15 concepts, 8 build decisions. Quick Win in 15 minutes; cheat-sheet skim in 90; full build in roughly 3 more hours. Prereq: Course 7.
+
+From Digital FTE to Production Worker with a Nervous System — A 90-minute, 15-concept course on wrapping your Digital FTE in an Inngest operational envelope: durable execution, event-driven triggers, step memoization, concurrency and throttling, replay, and HITL gates. Extends the customer-support Worker so it survives network blips, restarts, and long-pending approvals. Prereq: Course 8.
+
+Building a Workforce with Paperclip — A 90-minute, 6-scenario hands-on course where your coding agent stands up Paperclip (the open-source, MIT-licensed AI-native company control plane), hires a keyless local Worker, files a board approval as a permanent audited decision record, swaps in a real Gemini-backed Worker so a budget finally has billable work to meter, and reconstructs the whole company history with one SQL query against the activity log. Scenarios 1-4 and 6 run with no API key; only the budget scenario needs a free Gemini key. Prereq: Course 8 or Course 6.
+
+From Fixed to Dynamic Workforce — A half-day, 15-concept and 7-decision workshop where the workforce from Course 10 detects a capability gap, drafts a hire proposal, walks it through the same approval primitive that gates a $500 refund, and provisions a Legal Specialist on Claude Managed Agents. Hiring as a callable function. Closes Invariant 6 (the workforce is expandable under policy). Prereq: Course 10.
+
+From Founder Bottleneck to Owner Delegate — A half-day, 15-concept and 7-decision workshop where the owner of the workforce configures an Owner Identic AI on OpenClaw: it reads routine Paperclip approval requests, clears the ones inside a signed delegated envelope, and surfaces only the decisions that genuinely need a human. The owner is the last bottleneck — this course removes it. Closes Invariant 2 (every human needs a delegate). Ships a downloadable lab starter zip with mock endpoints, rules templates, and sample judgment context. Prereq: Course 11.
+
+Eval-Driven Development for AI Employees — The discipline that closes the manufacturing arc and wraps everything Courses 3 through 12 built. Four learning tracks — Reader (~3-4 hours, conceptual), Beginner (~1 day), Intermediate (~2 days), Advanced (~3 days for full implementation). 15 concepts plus a 7-decision lab. Teaches the nine-layer evaluation pyramid (unit, integration, output, tool-use, trace, RAG, safety, regression, production) and the four-tool stack that fills it: OpenAI Agent Evals with trace grading, DeepEval, Ragas, Phoenix. End state: a workforce where every member is measurably trustworthy, with a weekly trace-to-regression-test promotion ritual that keeps the eval suite alive over months. Reader track for leaders; Advanced track for shipping teams. Assumes either the OpenAI Agents SDK or Claude Managed Agents runtime.
+
+Deploy Your Agent Harness to the Cloud — The course that ships everything the manufacturing track built. It teaches the harness/sandbox split: the control plane (the harness that holds secrets, runs the agent loop, and keeps state) lives in a different security boundary from the execution plane (the sandbox where the agent's generated code actually runs). You deploy one complete production path: FastAPI on Azure Container Apps for the harness, Neon Postgres for durable state, Cloudflare R2 for files, a code-execution sandbox, four-surface observability, and the Course 13 eval suite wired in as a CI gate. Four learning tracks (Reader for leaders and architects; Beginner through Advanced for shipping teams), 17 concepts, and a 9-decision agent-driven lab where your coding agent reads a companion AGENTS.md and builds the harness while you direct it. Prereq: Course 13 (Decision 8 wires its eval suite). The Reader track needs no cloud accounts.
+
+Choosing Agentic Architectures — A conceptual crash course on pattern selection: five questions about your task map to one of four core patterns (sequential workflow; single agent + ReAct + tools; planning + ReAct execution; multi-agent specialist), plus reflection as an additive layer on top. The discipline is choosing by architectural fit, not by what looks impressive: each pattern is a bet about the task, and the right one is the bet whose assumptions match reality. Teaches the five-question decision tree, the two equally common failure modes (overshooting and undershooting), the runtime signals that reveal a mismatch, and how each pattern composes with your deployment topology and your eval suite. Four learning tracks (Reader ~2-3 hours conceptual; Beginner ~1 day; Intermediate ~2-3 days; Advanced ~4-5 days), a five-case decision lab, and a printable classify-this-task worksheet for design reviews. Prereq: you can already build and evaluate agents; cross-references the agent-building, operational-envelope, and eval courses.
+
+Payment-Enabled Agents: ACP, AP2, x402, and MPP — A multi-track crash course on the four protocols that let agents move money: ACP for consumer shopping, AP2 for authorization mandates, x402 for HTTP-native machine payments, and MPP for session-based settlement. The key idea: the four are layers, not rivals. You read a use case, pick one protocol per layer (discovery, authorization, commerce, settlement), and compose them as OpenAI Agents SDK code, with the tool-input guardrail that stops a payment before it happens. Four learning tracks (Reader ~2-3 hours conceptual; Beginner through Advanced for shipping teams), 19 concepts, a five-decision lab, and the three-level spend-limit discipline that keeps a runaway agent from draining a wallet. Prereq: Course 7 (the OpenAI Agents SDK); pairs with Course 9 (Inngest) and Course 14 (cloud deployment).
+
+References & Companions
+Which AI Employees Should You Use in 2026? — Five tools matched to who you are and what you need. Find your starting point in under a minute.
+
+Cheatsheets — Interactive quick-reference cards for the key tools in this book: Claude Code, the Claude collaborative workspace, and OpenClaw.
+
+Agentic Engineering Fundamentals — A 45-minute primer on the engineering discipline that underwrites everything in this section: how to design, ship, and operate agent-based systems with the same rigor you would apply to any other production software. Optional companion read for anyone going past Course 8.
+
+The glossary is your other constant companion. Keep both open in tabs.
+
+What You'll Have When You Finish
+When you reach the end of this section, you won't just understand the Agent Factory thesis — you'll have built against it. You'll have used general agents to ship real work. You'll have deployed at least one Digital FTE that runs without you. You'll have connected it to a nervous system, placed it inside a Paperclip-governed workforce, watched that workforce hire its own colleagues, and freed yourself from being its bottleneck through an Identic AI. You'll have wrapped the whole thing in evals you wrote yourself, so you can prove — not hope — that every Worker is trustworthy.
+
+That's the difference between this book and every other AI course: you don't finish with notes. You finish with a working AI workforce.
+
+And the book stays useful — the chapters are the reference you reach for whenever you get stuck.
+
+Everything after this section refines what you've already built. Now pick your mode and start.

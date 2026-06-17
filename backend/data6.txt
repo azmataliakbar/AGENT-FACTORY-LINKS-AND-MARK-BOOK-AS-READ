@@ -1,0 +1,37 @@
+https://agentfactory.panaversity.org/docs/markdown-html-crash-course
+
+Markdown In, HTML Out
+
+Markdown In, HTML Out: A Crash Course
+Write in Markdown. Read in HTML. The two document languages of working with agents.
+
+Most people type a vague request into an AI and get a long wall of text back. This course fixes both directions, with one language for each.
+
+Core Principle: "Markdown in, HTML out" — you write structured input in Markdown, the AI answers in designed HTML pages you actually read instead of skimming.
+
+Part 1: The Two Languages
+- Why agents need structure: headings and bullets remove ambiguity; agents parse Markdown natively
+- The asymmetry: you write to agent in Markdown (structure removes ambiguity), agent answers in HTML (rich, readable, shareable)
+- Who reads this last? Human → HTML. AI → Markdown. Unsure → Markdown.
+
+Part 2: Markdown (5 features you need)
+- Headings (#): show hierarchy and importance; make them claims not labels
+- Lists: bullets (-) for sets, numbers (1.) for sequences
+- Code blocks (```): wrap text AI should treat as data, not instructions
+- Links and images: include links so AI can read them; images with descriptions
+- Your first complete specification: skeleton with Goal, Context, Requirements, Hard Constraints, Out of Scope, Expected Output
+
+Part 3: HTML (you never write it, you demand it)
+- Why HTML: information density, navigability, shareability, interactivity, copy-back loop
+- You don't write HTML; you prompt for it: tell AI who reads it, what it contains, interactivity, and how to read
+- Five HTML patterns: plans/explorations, explainers/reports, code review, design prototypes, throwaway editors
+- Social feeds: plain text for body, HTML only for link preview cards
+- Publishing: Claude.ai publish button, GitHub Gist, GitHub Pages, Netlify
+- When destination is a document: PDF (sign/print), Word (edit), Slides (present), Excel (numbers), CSV (raw data)
+
+Part 4: One Exercise, Three Motions
+- Chat: Claude.ai/ChatGPT/Gemini in browser
+- Terminal: Claude Code/OpenCode on your computer
+- Desktop: Cowork/OpenWork with visual interface
+
+14 Concepts total covering the full Markdown→HTML workflow.

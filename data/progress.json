@@ -1,0 +1,121 @@
+{
+  "created": "2026-06-03",
+  "last_updated": "2026-06-16",
+  "total_chapters": 7,
+  "chapters": {
+    "The Agent Factory Orientation": {
+      "total_pages": 1,
+      "completed_pages": 0,
+      "completed_topics": [
+        "1"
+      ],
+      "status": "completed"
+    },
+    "The Agent Factory Thesis": {
+      "total_arguments": 16,
+      "completed_arguments": [
+        "2",
+        "8"
+      ],
+      "completed_dates": [
+        "2026-06-03",
+        "2026-06-16"
+      ],
+      "status": "in_progress"
+    },
+    "The AI Operating Layer": {
+      "total_concepts": 10,
+      "completed_concepts": [
+        "7"
+      ],
+      "completed_dates": [
+        "2026-06-16"
+      ],
+      "status": "in_progress"
+    },
+    "Quick Start": {
+      "total_pages": 1,
+      "completed_pages": 0,
+      "completed_topics": [
+        "1"
+      ],
+      "status": "completed"
+    },
+    "AI Prompting 2026": {
+      "total_concepts": 13,
+      "completed_concepts": [
+        "10"
+      ],
+      "completed_dates": [
+        "2026-06-16"
+      ],
+      "status": "in_progress"
+    },
+    "Markdown In, HTML Out": {
+      "total_concepts": 14,
+      "completed_concepts": [
+        "9"
+      ],
+      "completed_dates": [
+        "2026-06-16"
+      ],
+      "status": "in_progress"
+    },
+    "Skills & Connectors Crash Course": {
+      "total_concepts": 6,
+      "completed_concepts": [
+        "4"
+      ],
+      "completed_dates": [
+        "2026-06-16"
+      ],
+      "status": "in_progress"
+    }
+  },
+  "daily_log": [
+    {
+      "date": "2026-06-16",
+      "chapter": "The Agent Factory Orientation",
+      "completed": "1",
+      "notes": ""
+    },
+    {
+      "date": "2026-06-16",
+      "chapter": "The Agent Factory Thesis",
+      "completed": "8",
+      "notes": ""
+    },
+    {
+      "date": "2026-06-16",
+      "chapter": "The AI Operating Layer",
+      "completed": "7",
+      "notes": ""
+    },
+    {
+      "date": "2026-06-16",
+      "chapter": "Quick Start",
+      "completed": "1",
+      "notes": ""
+    },
+    {
+      "date": "2026-06-16",
+      "chapter": "AI Prompting 2026",
+      "completed": "10",
+      "notes": ""
+    },
+    {
+      "date": "2026-06-16",
+      "chapter": "Markdown In, HTML Out",
+      "completed": "9",
+      "notes": ""
+    },
+    {
+      "date": "2026-06-16",
+      "chapter": "Skills & Connectors Crash Course",
+      "completed": "4",
+      "notes": ""
+    }
+  ],
+  "exam_date": null,
+  "study_target": null
+}

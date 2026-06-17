@@ -1,0 +1,255 @@
+https://agentfactory.panaversity.org/docs/about
+
+================================================================================
+THE AI AGENT FACTORY — ORIENTATION & INTRODUCTION
+================================================================================
+Source: https://agentfactory.panaversity.org/docs/about#new-here-start-with-the-orientation
+Type: Book Landing Page / Orientation
+Purpose: Introduction to the book, its ecosystem, and how to navigate it
+
+================================================================================
+WHAT IS THIS BOOK?
+================================================================================
+
+A canonical source for the Third Era of AI Tools, delivered through a
+four-channel ecosystem: the book, an AI tutor (TutorClaw), an AI building
+partner (Agent Factory Skillpack), and a growing family of specialized
+derivative books.
+
+Tagline: The spec-driven, human-supervised method for building AI-Native
+Companies. For engineers, domain experts, and enterprise leaders building
+the workforce of the Agent era.
+
+Canonical = the authoritative source. The one master version everything
+else is built from.
+
+-------------------------------------------------------------------------------
+THE SHORTEST ROUTE THROUGH THIS BOOK (4 Steps)
+-------------------------------------------------------------------------------
+
+This book is a system of record, not a linear text.
+
+Step 1: Read the Thesis
+  Key vocabulary established:
+  - Digital FTE (AI Worker / AI Employee)
+  - AI-Native Company
+  - Two-Layer Model
+  - 10-80-10 Rule
+
+Step 2: Understand the Path (Browser Chat → General Agents → AI Workers)
+  Entry point: ChatGPT, Claude, Gemini (browser-based LLMs)
+  → AI Prompting in 2026 crash course
+
+  Next step: General Agents
+  - Claude Code, OpenCode, Claude Cowork, OpenWork
+  - Work inside environments: files, codebases, tools, commands, projects
+
+  Two Modes of General Agent Use:
+  - Mode 1 (Problem-Solving): AI helps you do work faster
+  - Mode 2 (Manufacturing): Build AI Workers that do work for you
+
+Step 3: Take Foundations, Then Matching Crash Course
+  Organized into two tracks (see Quick Start: Crash Courses)
+
+Step 4: Start Building — Use the Book on Demand
+  Reference chapters when you hit gaps: specs, SKILL.md, MCP connectors,
+  escalation rules, governance questions
+
+-------------------------------------------------------------------------------
+KEY QUOTES
+-------------------------------------------------------------------------------
+
+Sam Altman (OpenAI), Jan 2024:
+  "We're going to see ten-person billion-dollar companies pretty soon...
+  there's this betting pool for the first year that there is a one-person
+  billion-dollar company — which would have been unimaginable without AI —
+  and now it will happen."
+  → Video + Analysis linked
+
+Dario Amodei (Anthropic CEO):
+  70-80% chance of first single-person billion-dollar company arriving soon
+  Most likely categories: developer tools, automated customer service,
+  proprietary trading
+
+Real Example:
+  Solo founder built telehealth business to $400M first-year revenue using
+  rented infrastructure and AI agents in place of employees
+
+================================================================================
+CORE IDEA
+================================================================================
+
+Digital FTEs (Digital Workers) = reliable AI agents designed to perform
+structured knowledge work continuously inside real organizational environments.
+
+A Digital FTE is not just a model with a prompt. It is a SYSTEM combining:
+  1. Domain Expertise — the "knowledge engine" guiding reasoning
+  2. Structured Specifications — clear definitions of what agents must do
+  3. Engineering Architecture — infrastructure for reliability and scalability
+  4. Human Oversight — feedback loops for accountability and governance
+
+Together = AI-Native Company
+
+Terminology: Digital FTE = Digital Worker = AI Worker (interchangeable)
+
+-------------------------------------------------------------------------------
+THE FIVE-LAYER CAKE OF AI (Jensen Huang, NVIDIA)
+-------------------------------------------------------------------------------
+
+  Layer 5: Applications ← THIS BOOK IS ABOUT THIS LAYER
+  Layer 4: Models
+  Layer 3: Infrastructure
+  Layer 2: Chips
+  Layer 1: Energy
+
+Billions invested in layers 1-4 so layer 5 can exist. Value appears when
+intelligence is shaped into workflows, products, services, and operational
+systems people can actually use.
+
+================================================================================
+WHO THIS BOOK IS FOR
+================================================================================
+
+Reader Type                 Role                                    What You Gain
+────────────────────────────────────────────────────────────────────────────────
+AI Developers & Engineers   Build infrastructure and systems        Architectural patterns, spec-driven dev, cloud-native deployment
+Domain Experts              Provide knowledge to guide behavior     Convert expertise into reusable AI skills & Digital FTEs
+Enterprise Executives       Lead organizational adoption            Governance models, risk controls, deployment strategies
+Product Managers            Translate business needs into systems   Decompose workflows into skills and verifiable outputs
+Department Leaders          Apply AI to operational processes       Turn internal playbooks into scalable Digital FTE workflows
+
+================================================================================
+THIS BOOK IS INFRASTRUCTURE: THREE MODES OF DELIVERY
+================================================================================
+
+  Mode 1: READ — Traditional human reading. Chapters, frameworks, exercises.
+  Mode 2: TUTOR — TutorClaw. 24/7 AI tutor with persistent memory across
+           WhatsApp, Telegram, and web. Teaches from the same governance
+           principles and frameworks.
+  Mode 3: BUILD — Agent Factory Skillpack. AI building partner running in
+           Claude Code and OpenCode. Guides spec writing, SKILL.md
+           structuring, escalation protocols, MCP connector configuration.
+
+Same knowledge base powers all three modes. Updates propagate to all three
+simultaneously. This is the 10-80-10 pattern applied to education.
+
+-------------------------------------------------------------------------------
+TWO TOOLS, ONE DISCIPLINE
+-------------------------------------------------------------------------------
+
+  Claude Code (Frontier-first)
+  - Anthropic's frontier coding agent
+  - Best for: complex multi-file refactors, production-critical work
+
+  OpenCode (Open & model-agnostic)
+  - Open-source, connects to 75+ providers (Claude, GPT, Gemini, DeepSeek,
+    Qwen, Ollama)
+  - Best for: daily coursework, learning, experimentation, cost control
+
+Skills, specifications, and architectural patterns written for one work in
+the other. Method is the constant. Tool is the variable.
+
+================================================================================
+A SYSTEM OF RECORD FOR THE AGENT ERA
+================================================================================
+
+Jensen Huang (NVIDIA): AI agents need systems of record — authoritative
+places to read from, write to, and verify against.
+
+Enterprise layer (Huang): Databases, workflows, operational platforms
+  → Agents use SAP, ServiceNow at machine scale
+
+Human layer (this book): A canonical source for agentic AI education and
+  construction. Solving verification for the people who will build the
+  enterprises.
+
+The Architecture:
+  - The Book = Canonical source of truth
+  - TutorClaw = Teaching agent, reads from the book
+  - Claude Code/OpenCode + Skillpack = Building agents, read from the book
+  - Human Judgment = Verification layer (final 10%)
+
+-------------------------------------------------------------------------------
+DERIVATIVE BOOKS (Two Axes)
+-------------------------------------------------------------------------------
+
+Topic Axis:
+  - Learning Python in the AI Era
+  - Critical Thinking in the AI Era
+  - Learning Agentic Primitives
+
+Audience Axis:
+  - Primary, secondary, high-school editions
+  - Profession-specific: engineers, doctors, architects, lawyers,
+    accountants, bankers
+
+Methodology is the constant. Topic and audience are the variables.
+
+================================================================================
+THE THIRD ERA OF AI TOOLS
+================================================================================
+
+  First Era:  Model as the product
+  Second Era: Harness as the product (Claude Code, OpenCode, Cursor)
+  Third Era:  Discipline across harnesses as the product
+              → Methodology, vocabulary, verification standards,
+                SKILL.md library
+
+This is the layer the Agent Factory ecosystem occupies.
+
+================================================================================
+FOUR-CHANNEL ECOSYSTEM
+================================================================================
+
+  Channel 1: The Book — Canonical source, authoritative knowledge base
+  Channel 2: TutorClaw — Teaches 24/7, any language, any phone
+              (WhatsApp, Telegram, web)
+  Channel 3: Agent Factory Skillpack — Runs inside Claude Code, OpenCode,
+              any SKILL.md-honoring tool
+  Channel 4: Derivative Books — Rewritten for every audience and domain
+              (by topic, age, profession)
+
+================================================================================
+KEY CONCEPTS REFERENCED
+================================================================================
+
+  - Digital FTE / AI Worker / AI Employee
+  - AI-Native Company / Agentic Enterprise
+  - Two-Layer Model (Edge Layer + AI Workforce Layer)
+  - 10-80-10 Rule (Intent → Execution → Verification)
+  - Two Modes of General Agent Use (Problem-Solving vs Manufacturing)
+  - Seven Principles of General Agent Problem Solving (Mode 1)
+  - Seven Invariants of the Agent Factory (Mode 2)
+  - System of Record
+  - SKILL.md format (agentskills.io)
+  - Model Context Protocol (MCP)
+  - Identic AI (Don Tapscott concept)
+
+================================================================================
+TOOLS & PRODUCTS REFERENCED
+================================================================================
+
+  General Agents:     Claude Code, OpenCode, Claude Cowork, OpenWork
+  Tutor:              TutorClaw
+  Build Partner:      Agent Factory Skillpack
+  Management Layer:   Paperclip
+  Personal Delegate:  OpenClaw
+  Nervous System:     Inngest
+  Payment Protocols:  ACP (OpenAI+Stripe), AP2 (Google), x402 (Coinbase),
+                      MPP (Stripe/Tempo)
+  Models:             Claude, GPT, Gemini, DeepSeek, Qwen, Ollama
+
+================================================================================
+EXTERNAL REFERENCES
+================================================================================
+
+  - Sam Altman + Alexis Ohanian conversation, January 2024
+  - Dario Amodei (Anthropic CEO) — single-person billion-dollar company prediction
+  - Jensen Huang (NVIDIA CEO) — Five-Layer Cake, Systems of Record for agents
+  - Don Tapscott — "Identic AI" concept
+  - Solo founder telehealth business: $400M first-year revenue case study
+  - Cursor: 35% of pull requests produced by autonomous agents (Feb 2026)
+  - US data center construction: $42B annualized (Jan 2026)
+  - Meta, Google, Amazon, Microsoft: $600B+ projected AI infra spending (2026)
+
+================================================================================
