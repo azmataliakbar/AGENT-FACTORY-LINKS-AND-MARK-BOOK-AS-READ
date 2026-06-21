@@ -537,7 +537,7 @@
                             <span class="status-badge ${whataiBadgeClass}">${whataiBadgeText}</span>
                         </div>
                         ${data.whatai_completed_ideas && data.whatai_completed_ideas.length > 0 ? `<div class="completed-items">✓ Completed ideas: ${data.whatai_completed_ideas.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Idea 1</div>'}
-                        ${whataiCompleted < 9 ? `<div class="completed-items">💡 Next: Idea ${whataiCompleted + 1}</div>` : ''}
+                        ${whataiStatus === 'in_progress' ? `<div class="completed-items">💡 Next: Idea ${whataiCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 
@@ -554,7 +554,7 @@
                             <span class="status-badge ${thesisBadgeClass}">${thesisBadgeText}</span>
                         </div>
                         ${data.thesis_completed_arguments && data.thesis_completed_arguments.length > 0 ? `<div class="completed-items">✓ Completed arguments: ${data.thesis_completed_arguments.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Argument 1</div>'}
-                        ${thesisCompleted < 16 ? `<div class="completed-items">💡 Next: Argument ${thesisCompleted + 1}</div>` : ''}
+                        ${thesisStatus === 'in_progress' ? `<div class="completed-items">💡 Next: Argument ${thesisCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 
@@ -571,7 +571,7 @@
                             <span class="status-badge ${operatingBadgeClass}">${operatingBadgeText}</span>
                         </div>
                         ${data.operating_completed_concepts && data.operating_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.operating_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
-                        ${operatingCompleted < 10 ? `<div class="completed-items">💡 Next: Concept ${operatingCompleted + 1}</div>` : ''}
+                        ${operatingStatus === 'in_progress' ? `<div class="completed-items">💡 Next: Concept ${operatingCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 
@@ -603,7 +603,7 @@
                             <span class="status-badge ${aiBadgeClass}">${aiBadgeText}</span>
                         </div>
                         ${data.ai_completed_concepts && data.ai_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.ai_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
-                        ${aiCompleted < 13 ? `<div class="completed-items">💡 Next: Concept ${aiCompleted + 1}</div>` : ''}
+                        ${aiStatus === 'in_progress' ? `<div class="completed-items">💡 Next: Concept ${aiCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 
@@ -620,7 +620,7 @@
                             <span class="status-badge ${markdownBadgeClass}">${markdownBadgeText}</span>
                         </div>
                         ${data.markdown_completed_concepts && data.markdown_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.markdown_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
-                        ${markdownCompleted < 14 ? `<div class="completed-items">💡 Next: Concept ${markdownCompleted + 1}</div>` : ''}
+                        ${markdownStatus === 'in_progress' ? `<div class="completed-items">💡 Next: Concept ${markdownCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 
@@ -637,7 +637,7 @@
                             <span class="status-badge ${codeBadgeClass}">${codeBadgeText}</span>
                         </div>
                         ${data.code_completed_concepts && data.code_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.code_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
-                        ${codeCompleted < 13 ? `<div class="completed-items">💡 Next: Concept ${codeCompleted + 1}</div>` : ''}
+                        ${codeStatus === 'in_progress' ? `<div class="completed-items">💡 Next: Concept ${codeCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 
@@ -654,7 +654,7 @@
                             <span class="status-badge ${skillsBadgeClass}">${skillsBadgeText}</span>
                         </div>
                         ${data.skills_completed_concepts && data.skills_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.skills_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
-                        ${skillsCompleted < 6 ? `<div class="completed-items">💡 Next: Concept ${skillsCompleted + 1}</div>` : ''}
+                        ${skillsStatus === 'in_progress' ? `<div class="completed-items">💡 Next: Concept ${skillsCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 

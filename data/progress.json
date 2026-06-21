@@ -1,121 +1,74 @@
 {
   "created": "2026-06-03",
-  "last_updated": "2026-06-16",
-  "total_chapters": 7,
+  "last_updated": "2026-06-21",
+  "total_chapters": 10,
   "chapters": {
     "The Agent Factory Orientation": {
       "total_pages": 1,
       "completed_pages": 0,
-      "completed_topics": [
-        "1"
-      ],
-      "status": "completed"
+      "completed_topics": [],
+      "status": "not_started"
+    },
+    "Foundations": {
+      "total_pages": 1,
+      "completed_pages": 0,
+      "completed_topics": [],
+      "status": "not_started"
+    },
+    "What AI Actually Is": {
+      "total_ideas": 9,
+      "completed_ideas": [],
+      "completed_dates": [],
+      "status": "not_started"
     },
     "The Agent Factory Thesis": {
       "total_arguments": 16,
       "completed_arguments": [
-        "2",
-        "8"
+        "2"
       ],
       "completed_dates": [
-        "2026-06-03",
-        "2026-06-16"
+        "2026-06-03"
       ],
       "status": "in_progress"
     },
     "The AI Operating Layer": {
       "total_concepts": 10,
-      "completed_concepts": [
-        "7"
-      ],
-      "completed_dates": [
-        "2026-06-16"
-      ],
-      "status": "in_progress"
+      "completed_concepts": [],
+      "completed_dates": [],
+      "status": "not_started"
     },
     "Quick Start": {
       "total_pages": 1,
       "completed_pages": 0,
-      "completed_topics": [
-        "1"
-      ],
-      "status": "completed"
+      "completed_topics": [],
+      "status": "not_started"
     },
     "AI Prompting 2026": {
       "total_concepts": 13,
-      "completed_concepts": [
-        "10"
-      ],
-      "completed_dates": [
-        "2026-06-16"
-      ],
-      "status": "in_progress"
+      "completed_concepts": [],
+      "completed_dates": [],
+      "status": "not_started"
     },
     "Markdown In, HTML Out": {
       "total_concepts": 14,
-      "completed_concepts": [
-        "9"
-      ],
-      "completed_dates": [
-        "2026-06-16"
-      ],
-      "status": "in_progress"
+      "completed_concepts": [],
+      "completed_dates": [],
+      "status": "not_started"
+    },
+    "Code You Never Write": {
+      "total_concepts": 13,
+      "completed_concepts": [],
+      "completed_dates": [],
+      "status": "not_started"
     },
     "Skills & Connectors Crash Course": {
       "total_concepts": 6,
-      "completed_concepts": [
-        "4"
-      ],
-      "completed_dates": [
-        "2026-06-16"
-      ],
-      "status": "in_progress"
+      "completed_concepts": [],
+      "completed_dates": [],
+      "status": "not_started"
     }
   },
-  "daily_log": [
-    {
-      "date": "2026-06-16",
-      "chapter": "The Agent Factory Orientation",
-      "completed": "1",
-      "notes": ""
-    },
-    {
-      "date": "2026-06-16",
-      "chapter": "The Agent Factory Thesis",
-      "completed": "8",
-      "notes": ""
-    },
-    {
-      "date": "2026-06-16",
-      "chapter": "The AI Operating Layer",
-      "completed": "7",
-      "notes": ""
-    },
-    {
-      "date": "2026-06-16",
-      "chapter": "Quick Start",
-      "completed": "1",
-      "notes": ""
-    },
-    {
-      "date": "2026-06-16",
-      "chapter": "AI Prompting 2026",
-      "completed": "10",
-      "notes": ""
-    },
-    {
-      "date": "2026-06-16",
-      "chapter": "Markdown In, HTML Out",
-      "completed": "9",
-      "notes": ""
-    },
-    {
-      "date": "2026-06-16",
-      "chapter": "Skills & Connectors Crash Course",
-      "completed": "4",
-      "notes": ""
-    }
-  ],
+  "daily_log": [],
   "exam_date": null,
   "study_target": null
 }
