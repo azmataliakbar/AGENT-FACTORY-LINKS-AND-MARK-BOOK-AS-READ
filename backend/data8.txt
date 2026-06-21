@@ -1,0 +1,97 @@
+https://agentfactory.panaversity.org/docs/what-ai-actually-is-crash-course
+
+================================================================================
+WHAT AI ACTUALLY IS: A CRASH COURSE — 9 Ideas, No Math, No Code
+================================================================================
+
+What AI Actually Is: A Crash Course — 9 Ideas, No Math, No Code: the one thing the other five courses assume you already understand.
+
+You can drive a car without knowing what an engine is. Most people do. But the moment something goes wrong (a noise, a warning light, a stall on a hill) the people who know roughly what is under the hood stay calm, and the people who don't, panic. They cannot tell a harmless rattle from a seized engine, because to them the whole machine is one opaque box that either works or doesn't.
+
+That is most people's relationship with AI. They have learned to drive it (the other five Foundations courses make you a genuinely good driver) but they have never looked under the hood even once. So when the machine does something strange (invents a source, contradicts itself, sounds completely certain about something completely wrong), they have no model for why, and they either over-trust it or write it off. Both reactions come from the same place: not knowing what the thing actually is.
+
+This course is one look under the hood. Not the mechanic's view: there is no math here, no code, no neural-network diagrams you have to decode. Just the nine ideas that explain every surprising thing AI does, so that the failures stop being mysteries and start being predictable. Once you can predict the failures, you can avoid them, and that is the entire payoff.
+
+Read this one first. Of the six Foundations courses, this is the one to read before the others, even though it is the most abstract.
+
+----------------------------------------------------------------------
+PART 1: THE MACHINE — Three ideas about what is literally happening when you press send.
+----------------------------------------------------------------------
+
+Idea 1: It predicts the next piece of text; it does not look things up.
+- A language model is a machine that, given some text, predicts what text most plausibly comes next, one small piece at a time.
+- It is not a librarian who retrieves facts — it is a writer who continues text.
+- For well-worn facts, prediction and lookup give the same answer. For sparse topics, the model produces the most plausible-sounding continuation.
+- Temperature controls how "adventurously" it picks from likely next tokens.
+- Modern tools wrap the predictor with web search, file reading, etc., but the core model still only predicts.
+
+Idea 2: It learned by reading, and then the learning stopped.
+- Training: one-time education where the model read enormous quantities of human text and adjusted its weights to predict better.
+- Inference: every time you use it — the frozen weights run on your prompt. Nothing changes inside the model.
+- When you correct the model, it has not learned anything. Close the chat and it starts fresh.
+- The knowledge cutoff: training ended on a certain date. Anything after is not in the weights.
+- It cannot know your private world (your company numbers, calendar, etc.).
+- "Memory" features work by saving notes as text and re-inserting them into context — not actual memory.
+
+Idea 3: There is no separate place where it checks if it's true.
+- Humans have two faculties: one that generates an answer, and one that checks it.
+- The model has only the generating faculty. There is no internal truth-checker.
+- This is what people call "hallucination" — fluent, confident, completely false statements produced by the machine working exactly as built.
+- The model's confident tone is a style it learned from confident human writing, decoupled from truth.
+- You are the missing second faculty — the one who must verify.
+
+----------------------------------------------------------------------
+PART 2: WHY IT BEHAVES THE WAY IT DOES — Four ideas that turn strange behaviors into predictable patterns.
+----------------------------------------------------------------------
+
+Idea 4: It reads in tokens, not letters or words.
+- Text is chopped into tokens (chunks that are usually a word or part of a word).
+- The model only ever sees these chunks. It never sees individual letters unless forced to spell them out.
+- This explains: miscounting letters, bad at rhyming/anagrams, typos rarely matter, cost measured in tokens.
+- Images and audio are sliced into patches/segments that become tokens too.
+- Non-English languages cost more tokens per word (tokenizer learned English chunks best).
+
+Idea 5: The context window is the only thing it can see.
+- The context window holds your prompt, conversation history, attached files, tool descriptions, and system prompt.
+- Anything in the window the model can use. Anything not in it does not exist for this response.
+- Mental model: the context window is a reading desk, not a brain. Control what lands on it.
+- Why briefing works: you're literally putting information into the only place the machine can read it.
+- Why long conversations get worse ("context rot"): the window has a size limit; old signal gets diluted.
+
+Idea 6: Its confidence is a learned style, not a truth signal.
+- After training, models are tuned with human feedback (RLHF) toward answers that are confident, helpful, fluent, and agreeable.
+- Confidence became a style the model wears by default, regardless of whether the content is right.
+- The model sounds certain even when wrong — certainty is the house style, not a verdict.
+- It tends to agree with you (sycophancy) because agreement got rated higher than disagreement.
+- Fixes: neutral framing, forcing a score against criteria.
+
+Idea 7: It is brilliant and useless in adjacent moments (the jagged frontier).
+- AI ability is not smooth like human ability. It is jagged: superhuman at one task, startlingly incompetent at a neighboring one.
+- Superhuman at explaining quantum mechanics; can't count letters in "strawberry."
+- The jaggedness traces back to training text and the token mechanism.
+- Practical habits: don't assume because it nailed a hard task it will nail an easy one; verify across the boundary; try the same task in different models.
+- The frontier also moves — re-test assumptions every few months.
+
+----------------------------------------------------------------------
+PART 3: WHAT TURNED A TEXT-PREDICTOR INTO SOMETHING THAT ACTS
+----------------------------------------------------------------------
+
+Idea 8: Tools let it act, not just describe.
+- A tool is a defined action the model is allowed to call (web search, code run, file read, etc.).
+- When the model predicts that the right continuation is "use the search tool with this query," the product runs that action, drops the result back into context, and the model continues.
+- This loop (predict → act → observe → predict again) is the difference between a chatbot and an agent.
+- Code execution, connectors, web search — all are tools wired onto the same predictor.
+- Mechanical definition of an agent: a next-token predictor, given tools, running the predict-act-observe loop many times toward a goal.
+
+Idea 9: "Thinking" is just more prediction, out loud, before the answer.
+- A reasoning model, before giving its final answer, first predicts a long stretch of intermediate working and only then predicts the final answer.
+- It is still pure next-token prediction. The trick is that predicting the answer is easier once a good chain of reasoning is already on the desk.
+- Reasoning generates many extra tokens you never see, which takes time and money — save it for genuinely hard questions.
+- It does NOT give the machine a truth-checker. A reasoning model still hallucinates with full confidence inside a chain of reasoning.
+
+----------------------------------------------------------------------
+THE ONE SENTENCE TO CARRY
+----------------------------------------------------------------------
+"It is a prediction machine that learned by reading and has no organ for truth, so it is fluent everywhere, reliable only where the text was thick, and you are the part that checks."
+
+Not a librarian who retrieves the right book, but a brilliant, well-read writer who continues whatever you put in front of them (confidently, in any style, on any topic) and who never, on their own, stops to ask whether the continuation is true.

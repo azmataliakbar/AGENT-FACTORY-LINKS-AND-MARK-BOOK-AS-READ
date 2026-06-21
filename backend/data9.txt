@@ -1,0 +1,24 @@
+https://agentfactory.panaversity.org/docs/foundations
+
+================================================================================
+FOUNDATIONS: START IN THE BROWSER — Six Courses Everyone Needs
+================================================================================
+
+Foundations: Start in the Browser. Foundations for what? For everything you do with AI after this. Soon the book splits into two paths: using AI to do your own work faster, and building AI Workers that do the work for you. Both start from the same place. These six courses are that place, the skills every reader needs before picking a path. Do them once, here, and everything later builds on them.
+
+You learn all six right in a browser tab. Open Claude.ai, ChatGPT, or Gemini, type what you want, and get work back. Nothing to install, and no risk to your own computer. If you can use a website, you can do all six, and that same browser tab is where most of your real AI work will happen.
+
+Start in the browser, graduate when you need to: the same skills work everywhere. When uploading files every time gets slow, you graduate to your machine, where agents like Cowork or Claude Code run on your desktop and see your files directly. Most everyday AI work happens in the browser; you graduate to your machine only when the AI needs to touch your real files.
+
+----------------------------------------------------------------------
+THE SIX FOUNDATIONS COURSES (build on each other)
+----------------------------------------------------------------------
+
+1. What AI Actually Is — what the machine really is under the hood, so its surprises stop looking like magic or malfunction.
+2. AI Prompting in 2026 — how to ask, so you get what you actually wanted.
+3. Markdown In, HTML Out — the two simple document languages every agent speaks.
+4. Code You Never Write — get AI to write, run, and check code for you, even if you have never coded.
+5. Skills & Connectors — teach AI a task once, then give it safe access to your real apps.
+6. How to Think in the AI Era — when to reach for AI, when not to, and how to frame the problem.
+
+When uploading your files into the chat every time starts to feel slow, that is your signal you are ready for the next step: agents that live on your own computer and can see your files directly. That is the next group, General Agents.

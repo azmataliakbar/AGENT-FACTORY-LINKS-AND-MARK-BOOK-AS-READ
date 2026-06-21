@@ -1,0 +1,103 @@
+https://agentfactory.panaversity.org/docs/code-you-never-write-crash-course
+
+================================================================================
+CODE YOU NEVER WRITE: A CRASH COURSE — Getting AI to do the real, tedious work
+of your job, and trust the result, without writing or reading a single line of code
+================================================================================
+
+You describe the problem. The AI picks the language, writes the code, runs it, and fixes it. You never write a line, and you never read its syntax, though you will learn to check what it did. 13 concepts, 80% of real use.
+
+Picture a bookkeeper at a small company. She has never written a line of code. Every month, two files are supposed to agree: what her company recorded spending, and what the bank actually charged. And every month she loses an evening hunting, line by line, for the handful that don't match.
+
+Last month she tried something new. She opened an AI chat and typed, in plain English: "These two files should match, my own spending record and the bank statement. Find every transaction that is in one but not the other." A minute later the answer was on her screen: 23 mismatches, each with its amount and its date. The evening of hunting was gone.
+
+She never learned to program. She never read a line of the code. She described a problem, the AI wrote the code and ran it, and the work that used to eat her evening now finishes in the time it takes to pour a coffee.
+
+One sentence holds the whole course: you are not learning to write code; you are learning to be a good client for code. Good clients don't lay bricks. They write clear briefs, check the work against things they can measure, and keep what they paid for.
+
+----------------------------------------------------------------------
+PART 1: THE DEAL — Three concepts that change what you believe you are allowed to ask for.
+----------------------------------------------------------------------
+
+Concept 1: Code is no longer gated by coding.
+- The new deal: AI is the developer, you are the client, and the developer works in seconds, for free, and never gets tired of your revisions.
+- AI writes working code for well-described small problems.
+- AI runs the code itself (in its own sandbox or on your machine).
+- AI repairs the code itself — debugging is now part of the service.
+- Stop asking "do I know how to do this?" Start asking "can I describe what done looks like?"
+
+Concept 2: What code actually is (the 60-second version).
+- Code is a list of exact instructions that a computer follows perfectly, at any speed, any number of times.
+- Python: the default language for files, spreadsheets, data, charts, reports, automation.
+- JavaScript/TypeScript: for things you click or open in a browser.
+- You never choose between them — the AI picks the language based on what your problem needs.
+- Code is exact in both directions: it will compute correctly, and also do the wrong thing perfectly at scale.
+
+Concept 3: The dividing line — which problems are code problems.
+- Four signals (VPRF): Volume, Precision, Repetition, Files. Any one is enough.
+- Answer problems (just reply): draft, advise, summarize, explain, judge an idea.
+- Code problems (write and run code): total, merge, scan, rename, clean, reconcile, chart, automate.
+- The trap: problems that look like answer problems but trip Precision.
+
+----------------------------------------------------------------------
+PART 2: COMMISSIONING CODE — Five concepts covering the full client-side craft.
+----------------------------------------------------------------------
+
+Concept 4: Make the AI's hands move — automatic vs. explicit.
+- Never leave the decision to the AI on anything that trips the Precision signal.
+- The three-line incantation: "Write and run code to answer this. Show me the code you ran. Before anything, tell me the exact row count, column names, and date range."
+- A response with no visible code block is an opinion about your data, not an analysis.
+
+Concept 5: Brief the problem, not the program.
+- A complete brief answers five questions: Goal, Input, Output, Rules, Edge cases.
+- Rules is where your professional knowledge lives — the AI doesn't know your context.
+- Edge cases decide in advance what imperfect data should do.
+- Don't know your edge cases? Ask the AI to inspect first: "List what could be ambiguous or surprising."
+
+Concept 6: Verifying work you cannot read.
+- Five checks (the verification ladder): Known-answer test, Reality questions, Plain-English replay, Adversarial pass, Cross-model check.
+- Never act on a precision-critical number you haven't tested against at least one answer you independently know.
+- Salt your data with one known error and see if the code finds it.
+
+Concept 7: When it breaks — errors are dialogue, not failure.
+- An error is the computer describing what it needs. Paste the red text to the AI.
+- For wrong-but-running: report the symptom and your expected value.
+- Three failed fixes means the approach is wrong — demand a fresh approach.
+
+Concept 8: Keep the script — a solved problem becomes a button.
+- A script written once is an asset you own forever.
+- Save the brief next to the script. Give them a home in a folder.
+- Describe once, run forever, hand to anyone.
+
+----------------------------------------------------------------------
+PART 3: ONE PROBLEM, FIVE SURFACES
+----------------------------------------------------------------------
+
+Concept 9: Claude.ai (and ChatGPT, Gemini) — the home surface.
+- Zero installation, zero risk to your machine. Perfect for one-off and exploratory jobs.
+- The sandbox is a workshop you visit; it is not where your files live.
+
+Concept 10: Claude Code & OpenCode — the agent in your folder.
+- Live in the terminal — a chat box that sits inside a folder.
+- The agent can see files already there, run code directly on them, save scripts that persist forever.
+- This is the surface for code that must run on your own machine, on a schedule.
+
+Concept 11: Cowork & OpenWork — delegation with a safety ritual.
+- Desktop apps with plan-then-approve built in — verification by default.
+- Same power as terminal, wrapped in an app for knowledge workers.
+
+----------------------------------------------------------------------
+PART 4: POWER, SAFELY HELD
+----------------------------------------------------------------------
+
+Concept 12: Blast radius — the rules for code that touches your files.
+- Rule 1: Work on copies until a script has earned trust.
+- Rule 2: Demand a dry run before any destructive act.
+- Rule 3: Scope the territory to the smallest folder.
+- Rule 4: Output to new files; never overwrite inputs.
+
+Concept 13: The edge of the map.
+- Across the edge: software other people log into, always-on automation, high-stakes acts with no undo, judgment calls.
+- Inside the territory: every reconciliation, rollup, rename, merge, clean, cross-check, flag, chart, and report.
+
+You now commission code. The skills transfer across every surface — brief, force code, verify, keep. That is the entire discipline.

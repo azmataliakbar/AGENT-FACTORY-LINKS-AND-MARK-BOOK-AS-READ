@@ -374,12 +374,15 @@
 
         <div class="book-links">
             <a href="#" id="link1">1️⃣ START WITH THE ORIENTATION</a>
-            <a href="#" id="link2">2️⃣ The Agent Factory Thesis</a>
-            <a href="#" id="link3">3️⃣ The AI Operating Layer</a>
-            <a href="#" id="link4">4️⃣ Quick Start: Crash Courses</a>
-            <a href="#" id="link5">5️⃣ AI Prompting in 2026</a>
-            <a href="#" id="link6">6️⃣ Markdown In, HTML Out</a>
-            <a href="#" id="link7">7️⃣ SKILL CONNECTORS CRASH COURSE</a>
+            <a href="#" id="link2">2️⃣ Foundations (Everyone)</a>
+            <a href="#" id="link3">3️⃣ What AI Actually Is</a>
+            <a href="#" id="link4">4️⃣ The Agent Factory Thesis</a>
+            <a href="#" id="link5">5️⃣ The AI Operating Layer</a>
+            <a href="#" id="link6">6️⃣ Quick Start: Crash Courses</a>
+            <a href="#" id="link7">7️⃣ AI Prompting in 2026</a>
+            <a href="#" id="link8">8️⃣ Markdown In, HTML Out</a>
+            <a href="#" id="link9">9️⃣ Code You Never Write</a>
+            <a href="#" id="link10">🔟 SKILL CONNECTORS CRASH COURSE</a>
         </div>
 
         <div class="cards">
@@ -397,11 +400,14 @@
                     <div class="form-row">
                         <select id="chapterSelect">
                             <option value="The Agent Factory Orientation">1️⃣ START WITH THE ORIENTATION (1 page)</option>
+                            <option value="Foundations">2️⃣ Foundations (Everyone) (1 page)</option>
+                            <option value="What AI Actually Is">3️⃣ What AI Actually Is (9 ideas)</option>
                             <option value="The Agent Factory Thesis">🏛️ The Agent Factory Thesis (16 arguments)</option>
                             <option value="The AI Operating Layer">💻 The AI Operating Layer (10 concepts)</option>
                             <option value="Quick Start">📖 Quick Start (1 page)</option>
                             <option value="AI Prompting 2026">🤖 AI Prompting 2026 (13 concepts)</option>
                             <option value="Markdown In, HTML Out">📝 Markdown In, HTML Out (14 concepts)</option>
+                            <option value="Code You Never Write">💻 Code You Never Write (13 concepts)</option>
                             <option value="Skills & Connectors Crash Course">🔗 Skills & Connectors Crash Course (6 concepts)</option>
                         </select>
                         <input type="number" id="completedInput" placeholder="Enter number (1-13)" value="1" min="1" max="13">
@@ -433,7 +439,8 @@
 
         <div class="footer">
             <p>⚡ Mode 2: AI worker runs automatically. You build once. It works forever.</p>
-            <p style="font-size: 11px; margin-top: 10px;">Based on The AI Agent Factory - 7 Core Topics</p>
+            <p style="font-size: 11px; margin-top: 10px;">Based on The AI Agent Factory - 10 Core Topics</p>
+            <p style="font-size: 11px; margin-top: 5px;">Designed By : Azmat Ali</p>
         </div>
     </div>
 
@@ -442,11 +449,14 @@
 
         const BOOK_CONFIG = {
             "The Agent Factory Orientation": { total: 1, type: "page", display: "1️⃣ START WITH THE ORIENTATION" },
+            "Foundations": { total: 1, type: "page", display: "2️⃣ Foundations (Everyone)" },
+            "What AI Actually Is": { total: 9, type: "idea", display: "3️⃣ What AI Actually Is" },
             "The Agent Factory Thesis": { total: 16, type: "argument", display: "🏛️ The Agent Factory Thesis" },
             "The AI Operating Layer": { total: 10, type: "concept", display: "💻 The AI Operating Layer" },
             "Quick Start": { total: 1, type: "page", display: "📖 Quick Start" },
             "AI Prompting 2026": { total: 13, type: "concept", display: "🤖 AI Prompting 2026" },
             "Markdown In, HTML Out": { total: 14, type: "concept", display: "📝 Markdown In, HTML Out" },
+            "Code You Never Write": { total: 13, type: "concept", display: "💻 Code You Never Write" },
             "Skills & Connectors Crash Course": { total: 6, type: "concept", display: "🔗 Skills & Connectors" }
         };
 
@@ -459,11 +469,14 @@
             
             let hint = '';
             if (selected === 'The Agent Factory Orientation') hint = '💡 Orientation: Enter 1 to complete';
+            else if (selected === 'Foundations') hint = '💡 Foundations: Enter 1 to complete';
+            else if (selected === 'What AI Actually Is') hint = '💡 What AI Actually Is: Enter idea numbers 1 through 9';
             else if (selected === 'The Agent Factory Thesis') hint = '💡 Thesis: Enter argument numbers 1 through 16';
             else if (selected === 'The AI Operating Layer') hint = '💡 AI Operating Layer: Enter concept numbers 1 through 10';
             else if (selected === 'Quick Start') hint = '💡 Quick Start: Enter 1 to complete';
             else if (selected === 'AI Prompting 2026') hint = '💡 AI Prompting: Enter concept numbers 1 through 13';
             else if (selected === 'Markdown In, HTML Out') hint = '💡 Markdown/HTML: Enter concept numbers 1 through 14';
+            else if (selected === 'Code You Never Write') hint = '💡 Code You Never Write: Enter concept numbers 1 through 13';
             else hint = '💡 Skills & Connectors: Enter concept numbers 1 through 6';
             document.getElementById('inputHint').innerHTML = hint;
         }
@@ -480,7 +493,7 @@
                 
                 let detailsHtml = '';
                 
-                // Orientation
+                // 1️⃣ Orientation
                 let orientStatus = data.orientation_status;
                 let orientBadgeClass = orientStatus === 'completed' ? 'status-completed' : 'status-pending';
                 let orientBadgeText = orientStatus === 'completed' ? '✓ Complete' : '⏳ Not Started';
@@ -495,24 +508,57 @@
                     </div>
                 `;
                 
-                // AI Prompting
-                let aiCompleted = data.ai_completed || 0;
-                let aiStatus = aiCompleted === 13 ? 'completed' : (aiCompleted > 0 ? 'in_progress' : 'not_started');
-                let aiBadgeClass = aiStatus === 'completed' ? 'status-completed' : (aiStatus === 'in_progress' ? 'status-progress' : 'status-pending');
-                let aiBadgeText = aiStatus === 'completed' ? '✓ Complete' : (aiStatus === 'in_progress' ? `🔄 ${aiCompleted}/13` : '⏳ 0/13');
+                // 2️⃣ Foundations
+                let foundationsCompleted = data.foundations_completed || 0;
+                let foundationsStatus = foundationsCompleted === 1 ? 'completed' : (foundationsCompleted > 0 ? 'in_progress' : 'not_started');
+                let foundationsBadgeClass = foundationsStatus === 'completed' ? 'status-completed' : 'status-pending';
+                let foundationsBadgeText = foundationsStatus === 'completed' ? '✓ Complete' : '⏳ Not Started';
                 
                 detailsHtml += `
                     <div class="progress-detail">
                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-                            <span class="log-text"><strong>🤖 AI Prompting 2026</strong></span>
-                            <span class="status-badge ${aiBadgeClass}">${aiBadgeText}</span>
+                            <span class="log-text"><strong>2️⃣ Foundations (Everyone)</strong></span>
+                            <span class="status-badge ${foundationsBadgeClass}">${foundationsBadgeText}</span>
                         </div>
-                        ${data.ai_completed_concepts && data.ai_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.ai_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
-                        ${aiCompleted < 13 ? `<div class="completed-items">💡 Next: Concept ${aiCompleted + 1}</div>` : ''}
+                        <div class="completed-items">${foundationsStatus === 'completed' ? '✓ Page 1 completed' : '🎯 Goal: Complete Page 1'}</div>
                     </div>
                 `;
                 
-                // AI Operating Layer
+                // 3️⃣ What AI Actually Is
+                let whataiCompleted = data.whatai_completed || 0;
+                let whataiStatus = whataiCompleted === 9 ? 'completed' : (whataiCompleted > 0 ? 'in_progress' : 'not_started');
+                let whataiBadgeClass = whataiStatus === 'completed' ? 'status-completed' : (whataiStatus === 'in_progress' ? 'status-progress' : 'status-pending');
+                let whataiBadgeText = whataiStatus === 'completed' ? '✓ Complete' : (whataiStatus === 'in_progress' ? `🔄 ${whataiCompleted}/9` : '⏳ 0/9');
+                
+                detailsHtml += `
+                    <div class="progress-detail">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <span class="log-text"><strong>3️⃣ What AI Actually Is</strong></span>
+                            <span class="status-badge ${whataiBadgeClass}">${whataiBadgeText}</span>
+                        </div>
+                        ${data.whatai_completed_ideas && data.whatai_completed_ideas.length > 0 ? `<div class="completed-items">✓ Completed ideas: ${data.whatai_completed_ideas.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Idea 1</div>'}
+                        ${whataiCompleted < 9 ? `<div class="completed-items">💡 Next: Idea ${whataiCompleted + 1}</div>` : ''}
+                    </div>
+                `;
+                
+                // 🏛️ The Agent Factory Thesis
+                let thesisCompleted = data.thesis_completed || 0;
+                let thesisStatus = thesisCompleted === 16 ? 'completed' : (thesisCompleted > 0 ? 'in_progress' : 'not_started');
+                let thesisBadgeClass = thesisStatus === 'completed' ? 'status-completed' : (thesisStatus === 'in_progress' ? 'status-progress' : 'status-pending');
+                let thesisBadgeText = thesisStatus === 'completed' ? '✓ Complete' : (thesisStatus === 'in_progress' ? `🔄 ${thesisCompleted}/16` : '⏳ 0/16');
+                
+                detailsHtml += `
+                    <div class="progress-detail">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <span class="log-text"><strong>🏛️ The Agent Factory Thesis</strong></span>
+                            <span class="status-badge ${thesisBadgeClass}">${thesisBadgeText}</span>
+                        </div>
+                        ${data.thesis_completed_arguments && data.thesis_completed_arguments.length > 0 ? `<div class="completed-items">✓ Completed arguments: ${data.thesis_completed_arguments.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Argument 1</div>'}
+                        ${thesisCompleted < 16 ? `<div class="completed-items">💡 Next: Argument ${thesisCompleted + 1}</div>` : ''}
+                    </div>
+                `;
+                
+                // 💻 The AI Operating Layer
                 let operatingCompleted = data.operating_completed || 0;
                 let operatingStatus = operatingCompleted === 10 ? 'completed' : (operatingCompleted > 0 ? 'in_progress' : 'not_started');
                 let operatingBadgeClass = operatingStatus === 'completed' ? 'status-completed' : (operatingStatus === 'in_progress' ? 'status-progress' : 'status-pending');
@@ -529,7 +575,39 @@
                     </div>
                 `;
                 
-                // Markdown In, HTML Out
+                // 📖 Quick Start
+                let quickstartStatus = data.quickstart_status;
+                let quickstartBadgeClass = quickstartStatus === 'completed' ? 'status-completed' : 'status-pending';
+                let quickstartBadgeText = quickstartStatus === 'completed' ? '✓ Complete' : '⏳ Not Started';
+                
+                detailsHtml += `
+                    <div class="progress-detail">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <span class="log-text"><strong>📖 Quick Start: Crash Courses</strong></span>
+                            <span class="status-badge ${quickstartBadgeClass}">${quickstartBadgeText}</span>
+                        </div>
+                        <div class="completed-items">${quickstartStatus === 'completed' ? '✓ Page 1 completed' : '🎯 Goal: Complete Page 1'}</div>
+                    </div>
+                `;
+                
+                // 🤖 AI Prompting 2026
+                let aiCompleted = data.ai_completed || 0;
+                let aiStatus = aiCompleted === 13 ? 'completed' : (aiCompleted > 0 ? 'in_progress' : 'not_started');
+                let aiBadgeClass = aiStatus === 'completed' ? 'status-completed' : (aiStatus === 'in_progress' ? 'status-progress' : 'status-pending');
+                let aiBadgeText = aiStatus === 'completed' ? '✓ Complete' : (aiStatus === 'in_progress' ? `🔄 ${aiCompleted}/13` : '⏳ 0/13');
+                
+                detailsHtml += `
+                    <div class="progress-detail">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <span class="log-text"><strong>🤖 AI Prompting 2026</strong></span>
+                            <span class="status-badge ${aiBadgeClass}">${aiBadgeText}</span>
+                        </div>
+                        ${data.ai_completed_concepts && data.ai_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.ai_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
+                        ${aiCompleted < 13 ? `<div class="completed-items">💡 Next: Concept ${aiCompleted + 1}</div>` : ''}
+                    </div>
+                `;
+                
+                // 📝 Markdown In, HTML Out
                 let markdownCompleted = data.markdown_completed || 0;
                 let markdownStatus = markdownCompleted === 14 ? 'completed' : (markdownCompleted > 0 ? 'in_progress' : 'not_started');
                 let markdownBadgeClass = markdownStatus === 'completed' ? 'status-completed' : (markdownStatus === 'in_progress' ? 'status-progress' : 'status-pending');
@@ -546,7 +624,24 @@
                     </div>
                 `;
                 
-                // Skills & Connectors
+                // 💻 Code You Never Write
+                let codeCompleted = data.code_completed || 0;
+                let codeStatus = codeCompleted === 13 ? 'completed' : (codeCompleted > 0 ? 'in_progress' : 'not_started');
+                let codeBadgeClass = codeStatus === 'completed' ? 'status-completed' : (codeStatus === 'in_progress' ? 'status-progress' : 'status-pending');
+                let codeBadgeText = codeStatus === 'completed' ? '✓ Complete' : (codeStatus === 'in_progress' ? `🔄 ${codeCompleted}/13` : '⏳ 0/13');
+                
+                detailsHtml += `
+                    <div class="progress-detail">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <span class="log-text"><strong>💻 Code You Never Write</strong></span>
+                            <span class="status-badge ${codeBadgeClass}">${codeBadgeText}</span>
+                        </div>
+                        ${data.code_completed_concepts && data.code_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.code_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
+                        ${codeCompleted < 13 ? `<div class="completed-items">💡 Next: Concept ${codeCompleted + 1}</div>` : ''}
+                    </div>
+                `;
+                
+                // 🔗 Skills & Connectors
                 let skillsCompleted = data.skills_completed || 0;
                 let skillsStatus = skillsCompleted === 6 ? 'completed' : (skillsCompleted > 0 ? 'in_progress' : 'not_started');
                 let skillsBadgeClass = skillsStatus === 'completed' ? 'status-completed' : (skillsStatus === 'in_progress' ? 'status-progress' : 'status-pending');
@@ -560,23 +655,6 @@
                         </div>
                         ${data.skills_completed_concepts && data.skills_completed_concepts.length > 0 ? `<div class="completed-items">✓ Completed concepts: ${data.skills_completed_concepts.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Concept 1</div>'}
                         ${skillsCompleted < 6 ? `<div class="completed-items">💡 Next: Concept ${skillsCompleted + 1}</div>` : ''}
-                    </div>
-                `;
-                
-                // The Agent Factory Thesis
-                let thesisCompleted = data.thesis_completed || 0;
-                let thesisStatus = thesisCompleted === 16 ? 'completed' : (thesisCompleted > 0 ? 'in_progress' : 'not_started');
-                let thesisBadgeClass = thesisStatus === 'completed' ? 'status-completed' : (thesisStatus === 'in_progress' ? 'status-progress' : 'status-pending');
-                let thesisBadgeText = thesisStatus === 'completed' ? '✓ Complete' : (thesisStatus === 'in_progress' ? `🔄 ${thesisCompleted}/16` : '⏳ 0/16');
-                
-                detailsHtml += `
-                    <div class="progress-detail">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-                            <span class="log-text"><strong>🏛️ The Agent Factory Thesis</strong></span>
-                            <span class="status-badge ${thesisBadgeClass}">${thesisBadgeText}</span>
-                        </div>
-                        ${data.thesis_completed_arguments && data.thesis_completed_arguments.length > 0 ? `<div class="completed-items">✓ Completed arguments: ${data.thesis_completed_arguments.join(', ')}</div>` : '<div class="completed-items">🎯 Start with Argument 1</div>'}
-                        ${thesisCompleted < 16 ? `<div class="completed-items">💡 Next: Argument ${thesisCompleted + 1}</div>` : ''}
                     </div>
                 `;
                 
@@ -772,12 +850,15 @@
         document.getElementById('deleteAllBtn').addEventListener('click', deleteAllActivities);
         
         document.getElementById('link1').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/about#new-here-start-with-the-orientation', '_blank'));
-        document.getElementById('link2').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/thesis', '_blank'));
-        document.getElementById('link3').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/ai-operating-layer', '_blank'));
-        document.getElementById('link4').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/getting-started', '_blank'));
-        document.getElementById('link5').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/ai-prompting-2026', '_blank'));
-        document.getElementById('link6').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/markdown-html-crash-course', '_blank'));
-        document.getElementById('link7').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/skills-connectors-crash-course', '_blank'));
+        document.getElementById('link2').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/foundations', '_blank'));
+        document.getElementById('link3').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/what-ai-actually-is-crash-course', '_blank'));
+        document.getElementById('link4').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/thesis', '_blank'));
+        document.getElementById('link5').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/ai-operating-layer', '_blank'));
+        document.getElementById('link6').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/getting-started', '_blank'));
+        document.getElementById('link7').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/ai-prompting-2026', '_blank'));
+        document.getElementById('link8').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/markdown-html-crash-course', '_blank'));
+        document.getElementById('link9').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/code-you-never-write-crash-course', '_blank'));
+        document.getElementById('link10').addEventListener('click', () => window.open('https://agentfactory.panaversity.org/docs/skills-connectors-crash-course', '_blank'));
         
         document.getElementById('completedInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
