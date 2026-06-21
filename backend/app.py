@@ -243,55 +243,45 @@ def record_study():
             except ValueError:
                 return jsonify({'success': False, 'message': f'Please enter a valid number (1-{max_val})'}), 400
 
-            if completed in ch(progress, chapter)[field]:
-                next_num = len(ch(progress, chapter)[field]) + 1
-                return jsonify({'success': False, 'message': f'{completed} already completed! Try {next_num} next.'}), 400
+            target = int(completed)
+            current_set = set(ch(progress, chapter)[field])
+            # Find which new numbers need to be added (from next uncompleted up to target)
+            new_items = [str(i) for i in range(1, target + 1) if str(i) not in current_set]
+            if not new_items:
+                next_num = len(current_set) + 1
+                return jsonify({'success': False, 'message': f'Already completed up to {target}! Try {next_num} next.'}), 400
 
-        # Add to daily_log
-        progress['daily_log'].append({
-            'date': date, 'chapter': chapter, 'completed': completed, 'notes': ''
-        })
-
-        # Update chapter
+        # ── For page chapters ──
         if chapter in PAGE_CHAPTERS:
+            progress['daily_log'].append({
+                'date': date, 'chapter': chapter, 'completed': completed, 'notes': ''
+            })
             if not ch(progress, chapter)['completed_topics']:
                 ch(progress, chapter)['completed_topics'] = [completed]
                 ch(progress, chapter)['status'] = 'completed'
-        else:
-            if completed not in ch(progress, chapter)[field]:
-                ch(progress, chapter)[field].append(completed)
-                ch(progress, chapter).setdefault('completed_dates', []).append(date)
-                ch(progress, chapter)['status'] = 'in_progress'
-                if len(ch(progress, chapter)[field]) >= max_val:
-                    ch(progress, chapter)['status'] = 'completed'
-
-        # Sort lists
-        for ch_name in ALL_CHAPTERS:
-            fld = CHAPTER_CONFIG[ch_name]['field']
-            if fld in ch(progress, ch_name) and isinstance(ch(progress, ch_name)[fld], list):
-                if ch(progress, ch_name)[fld] and ch(progress, ch_name)[fld][0] not in ('1',):
-                    try:
-                        ch(progress, ch_name)[fld].sort(key=int)
-                    except (ValueError, TypeError):
-                        pass
-
-        progress['last_updated'] = date
-        save_progress(progress)
-
-        # Next suggestion
-        if chapter in PAGE_CHAPTERS:
             next_msg = "\n\nCongratulations! You completed this chapter!"
+
+        # ── For sequential chapters ──
         else:
+            progress['daily_log'].append({
+                'date': date, 'chapter': chapter, 'completed': f'1-{target}', 'notes': ''
+            })
+            ch(progress, chapter)[field].extend(new_items)
+            ch(progress, chapter).setdefault('completed_dates', []).append(date)
+            ch(progress, chapter)[field].sort(key=int)
+            ch(progress, chapter)['status'] = 'in_progress'
+            if len(ch(progress, chapter)[field]) >= max_val:
+                ch(progress, chapter)['status'] = 'completed'
+
             current_count = len(ch(progress, chapter)[field])
             if current_count < max_val:
                 next_msg = f"\n\nNext: Try {current_count + 1}/{max_val}"
             else:
                 next_msg = f"\n\nCongratulations! You completed {chapter}!"
 
-        return jsonify({
-            'success': True,
-            'message': f'Recorded: {chapter} - {completed}/{max_val}{next_msg}'
-        })
+        progress['last_updated'] = date
+        save_progress(progress)
+        return jsonify({'success': True, 'message': f'Recorded: {chapter} - up to {completed}/{max_val}{next_msg}'})
 
     except Exception as e:
         return jsonify({'success': False, 'message': f'Error: {str(e)}'}), 500
@@ -329,16 +319,11 @@ def delete_activity():
                     if not ch(progress, chapter).get('completed_topics'):
                         ch(progress, chapter)['status'] = 'not_started'
             else:
-                if completed_value in ch(progress, chapter).get(field, []):
-                    idx = ch(progress, chapter)[field].index(completed_value)
-                    ch(progress, chapter)[field].pop(idx)
-                    dates = ch(progress, chapter).get('completed_dates', [])
-                    if idx < len(dates):
-                        dates.pop(idx)
-                    if len(ch(progress, chapter)[field]) == 0:
-                        ch(progress, chapter)['status'] = 'not_started'
-                    else:
-                        ch(progress, chapter)['status'] = 'in_progress'
+                # completed_value is now "1-N" format, reset the whole chapter
+                ch(progress, chapter)[field] = []
+                if 'completed_dates' in ch(progress, chapter):
+                    ch(progress, chapter)['completed_dates'] = []
+                ch(progress, chapter)['status'] = 'not_started'
 
         progress['last_updated'] = datetime.now().strftime('%Y-%m-%d')
         save_progress(progress)
