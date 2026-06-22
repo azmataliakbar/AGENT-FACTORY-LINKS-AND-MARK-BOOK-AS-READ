@@ -341,6 +341,45 @@
             background: #b91c1c;
         }
 
+        .card-ref {
+            background: #f0f4ff;
+            border-left: 4px solid #4f46e5;
+        }
+
+        .card-ref h3 {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .ref-count {
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7280;
+            background: #e0e7ff;
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        .ref-list {
+            margin: 0;
+            padding: 0 0 0 20px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        .ref-list li {
+            padding: 2px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .ref-list li:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 600px) {
             .form-row {
                 flex-direction: column;
@@ -390,6 +429,168 @@
                 <h3>📅 Friday Auto Report</h3>
                 <p>Every Friday at 11 AM, the worker automatically generates a PDF study plan with next week's targets and exam prep reminders. No manual intervention needed.</p>
                 <button class="btn btn-secondary" id="infoBtn">⏰ Schedule: Friday 11 AM</button>
+            </div>
+
+            <!-- 📚 Quick Reference: Ideas, Arguments & Concepts -->
+            <div class="card card-ref">
+                <h3>🤖 What AI Actually Is <span class="ref-count">(9 ideas)</span></h3>
+                <ol class="ref-list">
+                    <li>Predicts the next piece, doesn't look up</li>
+                    <li>Learned by reading, then the learning froze</li>
+                    <li>No internal truth-checker (hallucination is normal)</li>
+                    <li>Reads in tokens, not letters or words</li>
+                    <li>Context window is the only thing it can see</li>
+                    <li>Confidence is a learned style, not a truth signal</li>
+                    <li>The Jagged Frontier (brilliant &amp; useless adjacently)</li>
+                    <li>Tools let it act, not just describe</li>
+                    <li>"Thinking" is more prediction before the answer</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>🏛️ The Agent Factory Thesis <span class="ref-count">(arguments 1-8)</span></h3>
+                <ol class="ref-list">
+                    <li>The Paradigm Shift (SaaS → Agent Factory Era)</li>
+                    <li>The Industrialized Stack</li>
+                    <li>The Production Engine (Intent → Outcome)</li>
+                    <li>Agents as Economic Actors</li>
+                    <li>The Human in the Loop</li>
+                    <li>The 10-80-10 Rule (Intent · Execute · Verify)</li>
+                    <li>Personal Agents &amp; The Two-Layer Model</li>
+                    <li>The Two Modes of General Agent Use</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>🏛️ The Agent Factory Thesis <span class="ref-count">(arguments 9-16)</span></h3>
+                <ol class="ref-list" start="9">
+                    <li>Seven Principles (Problem-Solving Mode)</li>
+                    <li>Invariant 1: The human is the principal</li>
+                    <li>Invariant 2: Every human needs a delegate</li>
+                    <li>Invariant 3: Workforce needs a management layer</li>
+                    <li>Invariant 4: Each worker picks its own engine</li>
+                    <li>Invariant 5: Workers run against a system of record</li>
+                    <li>Invariant 6: Workforce is expandable under policy</li>
+                    <li>Invariant 7: Workforce runs on a nervous system</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>💻 The AI Operating Layer <span class="ref-count">(10 concepts)</span></h3>
+                <ol class="ref-list">
+                    <li>Two deaths: SaaSpocalypse &amp; PC Obsolescence</li>
+                    <li>The SaaSpocalypse (unbundling SaaS)</li>
+                    <li>The forty-year stack is ending</li>
+                    <li>The AI Operating Layer architecture</li>
+                    <li>Personal agents vs general agents</li>
+                    <li>The computer that controls itself</li>
+                    <li>Why this time is different</li>
+                    <li>The honest objections</li>
+                    <li>What dies, what survives, what it means</li>
+                    <li>People set direction, agents do the work</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>🤖 AI Prompting in 2026 <span class="ref-count">(concepts 1-7)</span></h3>
+                <ol class="ref-list">
+                    <li>Brief like a colleague</li>
+                    <li>Frequency equals reliability</li>
+                    <li>Web search / deep research</li>
+                    <li>Context is the whole game</li>
+                    <li>Thinking / reasoning mode</li>
+                    <li>Neutral framing (stop sycophancy)</li>
+                    <li>Brainstorm-iterate loop</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>🤖 AI Prompting in 2026 <span class="ref-count">(concepts 8-13)</span></h3>
+                <ol class="ref-list" start="8">
+                    <li>Multimodal (images &amp; audio)</li>
+                    <li>Voice input &amp; meeting transcripts</li>
+                    <li>Model writes and runs code</li>
+                    <li>AI desktop apps &amp; permissions</li>
+                    <li>Model comparison</li>
+                    <li>Models checking models</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>📝 Markdown In, HTML Out <span class="ref-count">(concepts 1-7)</span></h3>
+                <ol class="ref-list">
+                    <li>Why agents need structure</li>
+                    <li>Asymmetry: Markdown in, HTML out</li>
+                    <li>Headings show what matters most</li>
+                    <li>Bullets for sets, numbers for sequences</li>
+                    <li>Code blocks fence data from instructions</li>
+                    <li>Links &amp; images point at the world</li>
+                    <li>Your first complete specification</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>📝 Markdown In, HTML Out <span class="ref-count">(concepts 8-14)</span></h3>
+                <ol class="ref-list" start="8">
+                    <li>Why ask for HTML at all</li>
+                    <li>You prompt for HTML, you don't write it</li>
+                    <li>The five HTML patterns</li>
+                    <li>When the destination is a feed</li>
+                    <li>Publishing: from artifact to link</li>
+                    <li>When the destination is a document</li>
+                    <li>The three motions (chat, terminal, desktop)</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>💻 Code You Never Write <span class="ref-count">(concepts 1-7)</span></h3>
+                <ol class="ref-list">
+                    <li>Code is no longer gated by coding</li>
+                    <li>What code actually is (60-second version)</li>
+                    <li>Dividing line: VPRF (Volume, Precision, Repetition, Files)</li>
+                    <li>Make AI's hands move: force computation</li>
+                    <li>Brief the problem, not the program</li>
+                    <li>Verifying work you cannot read</li>
+                    <li>Errors are dialogue, not failure</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>💻 Code You Never Write <span class="ref-count">(concepts 8-13)</span></h3>
+                <ol class="ref-list" start="8">
+                    <li>Keep the script: solved problem becomes a button</li>
+                    <li>Claude.ai: the home surface (sandbox)</li>
+                    <li>Claude Code &amp; OpenCode: agent in your folder</li>
+                    <li>Cowork &amp; OpenWork: delegation with safety ritual</li>
+                    <li>Blast radius: safety for file-touching code</li>
+                    <li>The edge of the map &amp; what's across it</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>🔗 Skills &amp; Connectors <span class="ref-count">(concepts 1-7)</span></h3>
+                <ol class="ref-list">
+                    <li>From chat box to operating layer</li>
+                    <li>What a Skill actually is</li>
+                    <li>What a Connector actually is</li>
+                    <li>Skills vs Connectors vs Projects vs Custom Instructions</li>
+                    <li>Automatic invocation: no slash command needed</li>
+                    <li>The skills that come built in</li>
+                    <li>Connecting your apps</li>
+                </ol>
+            </div>
+
+            <div class="card card-ref">
+                <h3>🔗 Skills &amp; Connectors <span class="ref-count">(concepts 8-14)</span></h3>
+                <ol class="ref-list" start="8">
+                    <li>The real magic: Skills + Connectors together</li>
+                    <li>Which problem needs which</li>
+                    <li>Fastest path: let AI write the skill</li>
+                    <li>Anatomy of a SKILL.md</li>
+                    <li>The description field is the whole game</li>
+                    <li>Test, then iterate</li>
+                    <li>Saving and sharing your skill</li>
+                </ol>
             </div>
 
             <div class="card">

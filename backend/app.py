@@ -256,9 +256,8 @@ def record_study():
             progress['daily_log'].append({
                 'date': date, 'chapter': chapter, 'completed': completed, 'notes': ''
             })
-            if not ch(progress, chapter)['completed_topics']:
-                ch(progress, chapter)['completed_topics'] = [completed]
-                ch(progress, chapter)['status'] = 'completed'
+            ch(progress, chapter)['completed_topics'] = [completed]
+            ch(progress, chapter)['status'] = 'completed'
             next_msg = "\n\nCongratulations! You completed this chapter!"
 
         # ── For sequential chapters ──
